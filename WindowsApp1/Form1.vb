@@ -40,4 +40,21 @@
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
 
     End Sub
+
+    Private Sub btn_pawn_Click(sender As Object, e As EventArgs) Handles btn_pawn.Click
+        Panel4.Size = PanelTransactions.Size
+        Panel4.Visible = True
+
+        PanelTransactions.Visible = False
+
+
+
+
+
+    End Sub
+
+    Private Sub AddCust_Click(sender As Object, e As EventArgs) Handles AddCust.Click
+        Panel4.Visible = False
+        Panel5.Visible = True
+    End Sub
 End Class
