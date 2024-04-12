@@ -1,4 +1,8 @@
 ﻿Public Class Form1
+
+
+
+
     Private Sub btn_customers_Click(sender As Object, e As EventArgs) Handles btn_customers.Click
         panelOnButtonCst.Height = btn_customers.Height
         panelOnButtonCst.Top = btn_customers.Top
@@ -44,6 +48,7 @@
     Private Sub btn_pawn_Click(sender As Object, e As EventArgs) Handles btn_pawn.Click
         Panel4.Size = PanelTransactions.Size
         Panel4.Visible = True
+        DataGridView1.Rows.Add("Ver", "Borje", "09380422897", "Pamorangon")
 
         PanelTransactions.Visible = False
 
@@ -57,4 +62,41 @@
         Panel4.Visible = False
         Panel5.Visible = True
     End Sub
+
+    Private Sub DataGridView1_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.RowHeaderMouseClick
+        ' Get the index of the clicked row
+        Dim rowIndex As Integer = e.RowIndex
+
+        ' Access the data in the clicked row
+        Dim value1 As String = DataGridView1.Rows(rowIndex).Cells("Column1").Value.ToString()
+        Dim value2 As String = DataGridView1.Rows(rowIndex).Cells("Column2").Value.ToString()
+        Dim value3 As String = DataGridView1.Rows(rowIndex).Cells("Column3").Value.ToString()
+
+        Dim value4 As String = DataGridView1.Rows(rowIndex).Cells("Column4").Value.ToString()
+
+
+
+        ' Perform actions with the data, for example, display it in a MessageBox
+
+
+        Panel6.Visible = True
+        Panel6.Size = PanelTransactions.Size
+        Panel6.Location = PanelTransactions.Location
+        Panel6.Anchor = PanelTransactions.Anchor
+
+
+
+
+        Panel5.Visible = False
+
+        Panel4.Visible = False
+
+        Nfnametbox.Text = value1
+        Nlnametbox.Text = value2
+        Ncontacttbox.Text = value3
+        Naddresstbox.Text = value4
+
+    End Sub
+
+
 End Class
