@@ -60,7 +60,7 @@
 
     Private Sub AddCust_Click(sender As Object, e As EventArgs) Handles AddCust.Click
         Panel4.Visible = False
-        Panel5.Visible = True
+        AddCustomerPnl.Visible = True
     End Sub
 
     Private Sub DataGridView1_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.RowHeaderMouseClick
@@ -87,7 +87,7 @@
 
 
 
-        Panel5.Visible = False
+        AddCustomerPnl.Visible = False
 
         Panel4.Visible = False
 
@@ -98,5 +98,21 @@
 
     End Sub
 
+    Private Sub addcustbtn_Click(sender As Object, e As EventArgs) Handles addcustbtn.Click
 
+        Dim str As String
+
+        str = "INSERT INTO customers( CustFname, CustLname, CustContact,CustAddress ) VALUES ('" & fnameTbox.Text & "','" & lnameTbox.Text & "','" & contactTbox.Text & "','" & addressTbox.Text & "')"
+
+
+        Try
+            readQuery(str)
+            MsgBox("Successfully Added")
+            AddCustomerPnl.Visible = False
+            Panel4.Visible = True
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
 End Class

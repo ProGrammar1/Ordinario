@@ -24,7 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,13 +40,6 @@ Partial Class Form1
         Me.panelUp = New System.Windows.Forms.Panel()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Ncontacttbox = New System.Windows.Forms.TextBox()
-        Me.Nlnametbox = New System.Windows.Forms.TextBox()
-        Me.Nfnametbox = New System.Windows.Forms.TextBox()
-        Me.contact = New System.Windows.Forms.Label()
-        Me.lname = New System.Windows.Forms.Label()
-        Me.fname = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.AddCust = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -54,6 +47,34 @@ Partial Class Form1
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.total = New System.Windows.Forms.Label()
+        Me.Interest = New System.Windows.Forms.Label()
+        Me.principal = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.jname = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Jtype = New System.Windows.Forms.Label()
+        Me.DateTimeexpiry = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimematurity = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimeloan = New System.Windows.Forms.DateTimePicker()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.loandate = New System.Windows.Forms.Label()
+        Me.Naddresstbox = New System.Windows.Forms.TextBox()
+        Me.address = New System.Windows.Forms.Label()
+        Me.Ncontacttbox = New System.Windows.Forms.TextBox()
+        Me.Nlnametbox = New System.Windows.Forms.TextBox()
+        Me.Nfnametbox = New System.Windows.Forms.TextBox()
+        Me.contact = New System.Windows.Forms.Label()
+        Me.lname = New System.Windows.Forms.Label()
+        Me.fname = New System.Windows.Forms.Label()
         Me.PanelPawn = New System.Windows.Forms.Panel()
         Me.Pawn = New System.Windows.Forms.Label()
         Me.btn_pawn = New System.Windows.Forms.Button()
@@ -64,8 +85,8 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelTransactions = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.AddCustomerPnl = New System.Windows.Forms.Panel()
+        Me.addcustbtn = New System.Windows.Forms.Button()
         Me.addressTbox = New System.Windows.Forms.TextBox()
         Me.contactTbox = New System.Windows.Forms.TextBox()
         Me.lnameTbox = New System.Windows.Forms.TextBox()
@@ -74,37 +95,16 @@ Partial Class Form1
         Me.contactLabel = New System.Windows.Forms.Label()
         Me.lnameLabel = New System.Windows.Forms.Label()
         Me.fnameLabel = New System.Windows.Forms.Label()
-        Me.address = New System.Windows.Forms.Label()
-        Me.Naddresstbox = New System.Windows.Forms.TextBox()
-        Me.loandate = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.DateTimeloan = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimematurity = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimeexpiry = New System.Windows.Forms.DateTimePicker()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Jtype = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.jname = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.principal = New System.Windows.Forms.Label()
-        Me.Interest = New System.Windows.Forms.Label()
-        Me.total = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.panel_left.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.PanelPawn.SuspendLayout()
         Me.PanelPay.SuspendLayout()
         Me.PanelTransactions.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        Me.Panel7.SuspendLayout()
+        Me.AddCustomerPnl.SuspendLayout()
         Me.SuspendLayout()
         '
         'panel_left
@@ -294,6 +294,71 @@ Partial Class Form1
         Me.Panel4.TabIndex = 5
         Me.Panel4.Visible = False
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(394, 33)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(175, 20)
+        Me.TextBox1.TabIndex = 1
+        '
+        'AddCust
+        '
+        Me.AddCust.BackColor = System.Drawing.Color.Maroon
+        Me.AddCust.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddCust.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AddCust.ForeColor = System.Drawing.SystemColors.Control
+        Me.AddCust.Location = New System.Drawing.Point(577, 22)
+        Me.AddCust.Name = "AddCust"
+        Me.AddCust.Size = New System.Drawing.Size(100, 33)
+        Me.AddCust.TabIndex = 2
+        Me.AddCust.Text = "New"
+        Me.AddCust.UseVisualStyleBackColor = False
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridView1.ColumnHeadersHeight = 30
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.DataGridView1.EnableHeadersVisualStyles = False
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(669, 385)
+        Me.DataGridView1.TabIndex = 0
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column1.HeaderText = "First Name"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.HeaderText = "Last Name"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column3.HeaderText = "Contact"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column4.HeaderText = "Address"
+        Me.Column4.Name = "Column4"
+        '
         'Panel6
         '
         Me.Panel6.Controls.Add(Me.Button4)
@@ -317,6 +382,216 @@ Partial Class Form1
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(692, 473)
         Me.Panel6.TabIndex = 3
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.Gold
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Location = New System.Drawing.Point(584, 438)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 24
+        Me.Button4.Text = "Confirm"
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.Maroon
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.Location = New System.Drawing.Point(503, 438)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 23
+        Me.Button3.Text = "Cancel"
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.Transparent
+        Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel7.Controls.Add(Me.TextBox9)
+        Me.Panel7.Controls.Add(Me.TextBox8)
+        Me.Panel7.Controls.Add(Me.TextBox7)
+        Me.Panel7.Controls.Add(Me.total)
+        Me.Panel7.Controls.Add(Me.Interest)
+        Me.Panel7.Controls.Add(Me.principal)
+        Me.Panel7.Controls.Add(Me.TextBox6)
+        Me.Panel7.Controls.Add(Me.jname)
+        Me.Panel7.Controls.Add(Me.ComboBox1)
+        Me.Panel7.Controls.Add(Me.Jtype)
+        Me.Panel7.Location = New System.Drawing.Point(40, 240)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(624, 186)
+        Me.Panel7.TabIndex = 14
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox9.Location = New System.Drawing.Point(442, 87)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(132, 22)
+        Me.TextBox9.TabIndex = 22
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox8.Location = New System.Drawing.Point(442, 53)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(132, 22)
+        Me.TextBox8.TabIndex = 21
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox7.Location = New System.Drawing.Point(442, 15)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(132, 22)
+        Me.TextBox7.TabIndex = 15
+        '
+        'total
+        '
+        Me.total.AutoSize = True
+        Me.total.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.total.Location = New System.Drawing.Point(381, 87)
+        Me.total.Name = "total"
+        Me.total.Size = New System.Drawing.Size(38, 16)
+        Me.total.TabIndex = 20
+        Me.total.Text = "Total"
+        '
+        'Interest
+        '
+        Me.Interest.AutoSize = True
+        Me.Interest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Interest.Location = New System.Drawing.Point(358, 56)
+        Me.Interest.Name = "Interest"
+        Me.Interest.Size = New System.Drawing.Size(82, 16)
+        Me.Interest.TabIndex = 19
+        Me.Interest.Text = "Interest Rate"
+        '
+        'principal
+        '
+        Me.principal.AutoSize = True
+        Me.principal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.principal.Location = New System.Drawing.Point(367, 20)
+        Me.principal.Name = "principal"
+        Me.principal.Size = New System.Drawing.Size(59, 16)
+        Me.principal.TabIndex = 18
+        Me.principal.Text = "Principal"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox6.Location = New System.Drawing.Point(115, 59)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(211, 22)
+        Me.TextBox6.TabIndex = 15
+        '
+        'jname
+        '
+        Me.jname.AutoSize = True
+        Me.jname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.jname.Location = New System.Drawing.Point(16, 62)
+        Me.jname.Name = "jname"
+        Me.jname.Size = New System.Drawing.Size(93, 16)
+        Me.jname.TabIndex = 17
+        Me.jname.Text = "Jewelry Name"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(115, 17)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(212, 24)
+        Me.ComboBox1.TabIndex = 16
+        '
+        'Jtype
+        '
+        Me.Jtype.AutoSize = True
+        Me.Jtype.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Jtype.Location = New System.Drawing.Point(16, 24)
+        Me.Jtype.Name = "Jtype"
+        Me.Jtype.Size = New System.Drawing.Size(88, 16)
+        Me.Jtype.TabIndex = 15
+        Me.Jtype.Text = "Jewelry Type"
+        '
+        'DateTimeexpiry
+        '
+        Me.DateTimeexpiry.CustomFormat = ""
+        Me.DateTimeexpiry.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimeexpiry.Location = New System.Drawing.Point(451, 154)
+        Me.DateTimeexpiry.Name = "DateTimeexpiry"
+        Me.DateTimeexpiry.RightToLeftLayout = True
+        Me.DateTimeexpiry.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimeexpiry.TabIndex = 13
+        '
+        'DateTimematurity
+        '
+        Me.DateTimematurity.CustomFormat = ""
+        Me.DateTimematurity.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimematurity.Location = New System.Drawing.Point(451, 106)
+        Me.DateTimematurity.Name = "DateTimematurity"
+        Me.DateTimematurity.RightToLeftLayout = True
+        Me.DateTimematurity.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimematurity.TabIndex = 12
+        '
+        'DateTimeloan
+        '
+        Me.DateTimeloan.CustomFormat = ""
+        Me.DateTimeloan.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimeloan.Location = New System.Drawing.Point(451, 54)
+        Me.DateTimeloan.Name = "DateTimeloan"
+        Me.DateTimeloan.RightToLeftLayout = True
+        Me.DateTimeloan.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimeloan.TabIndex = 11
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(369, 158)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(76, 16)
+        Me.Label12.TabIndex = 10
+        Me.Label12.Text = "Expiry Date"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(360, 104)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(85, 16)
+        Me.Label11.TabIndex = 9
+        Me.Label11.Text = "Maturity Date"
+        '
+        'loandate
+        '
+        Me.loandate.AutoSize = True
+        Me.loandate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.loandate.Location = New System.Drawing.Point(376, 57)
+        Me.loandate.Name = "loandate"
+        Me.loandate.Size = New System.Drawing.Size(69, 16)
+        Me.loandate.TabIndex = 8
+        Me.loandate.Text = "Loan Date"
+        '
+        'Naddresstbox
+        '
+        Me.Naddresstbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Naddresstbox.Location = New System.Drawing.Point(107, 203)
+        Me.Naddresstbox.Name = "Naddresstbox"
+        Me.Naddresstbox.Size = New System.Drawing.Size(222, 22)
+        Me.Naddresstbox.TabIndex = 7
+        '
+        'address
+        '
+        Me.address.AutoSize = True
+        Me.address.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.address.Location = New System.Drawing.Point(29, 206)
+        Me.address.Name = "address"
+        Me.address.Size = New System.Drawing.Size(58, 16)
+        Me.address.TabIndex = 6
+        Me.address.Text = "Address"
         '
         'Ncontacttbox
         '
@@ -371,71 +646,6 @@ Partial Class Form1
         Me.fname.Size = New System.Drawing.Size(72, 16)
         Me.fname.TabIndex = 0
         Me.fname.Text = "First Name"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(394, 33)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(175, 20)
-        Me.TextBox1.TabIndex = 1
-        '
-        'AddCust
-        '
-        Me.AddCust.BackColor = System.Drawing.Color.Maroon
-        Me.AddCust.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.AddCust.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AddCust.ForeColor = System.Drawing.SystemColors.Control
-        Me.AddCust.Location = New System.Drawing.Point(577, 22)
-        Me.AddCust.Name = "AddCust"
-        Me.AddCust.Size = New System.Drawing.Size(100, 33)
-        Me.AddCust.TabIndex = 2
-        Me.AddCust.Text = "New"
-        Me.AddCust.UseVisualStyleBackColor = False
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
-        Me.DataGridView1.ColumnHeadersHeight = 30
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.DataGridView1.EnableHeadersVisualStyles = False
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 59)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(669, 385)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column1.HeaderText = "First Name"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.HeaderText = "Last Name"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column3.HeaderText = "Contact"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column4.HeaderText = "Address"
-        Me.Column4.Name = "Column4"
         '
         'PanelPawn
         '
@@ -543,35 +753,35 @@ Partial Class Form1
         Me.PanelTransactions.Size = New System.Drawing.Size(683, 476)
         Me.PanelTransactions.TabIndex = 2
         '
-        'Panel5
+        'AddCustomerPnl
         '
-        Me.Panel5.Controls.Add(Me.Button2)
-        Me.Panel5.Controls.Add(Me.addressTbox)
-        Me.Panel5.Controls.Add(Me.contactTbox)
-        Me.Panel5.Controls.Add(Me.lnameTbox)
-        Me.Panel5.Controls.Add(Me.fnameTbox)
-        Me.Panel5.Controls.Add(Me.AddressLabel)
-        Me.Panel5.Controls.Add(Me.contactLabel)
-        Me.Panel5.Controls.Add(Me.lnameLabel)
-        Me.Panel5.Controls.Add(Me.fnameLabel)
-        Me.Panel5.Location = New System.Drawing.Point(196, 22)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(684, 470)
-        Me.Panel5.TabIndex = 5
-        Me.Panel5.Visible = False
+        Me.AddCustomerPnl.Controls.Add(Me.addcustbtn)
+        Me.AddCustomerPnl.Controls.Add(Me.addressTbox)
+        Me.AddCustomerPnl.Controls.Add(Me.contactTbox)
+        Me.AddCustomerPnl.Controls.Add(Me.lnameTbox)
+        Me.AddCustomerPnl.Controls.Add(Me.fnameTbox)
+        Me.AddCustomerPnl.Controls.Add(Me.AddressLabel)
+        Me.AddCustomerPnl.Controls.Add(Me.contactLabel)
+        Me.AddCustomerPnl.Controls.Add(Me.lnameLabel)
+        Me.AddCustomerPnl.Controls.Add(Me.fnameLabel)
+        Me.AddCustomerPnl.Location = New System.Drawing.Point(196, 22)
+        Me.AddCustomerPnl.Name = "AddCustomerPnl"
+        Me.AddCustomerPnl.Size = New System.Drawing.Size(684, 470)
+        Me.AddCustomerPnl.TabIndex = 5
+        Me.AddCustomerPnl.Visible = False
         '
-        'Button2
+        'addcustbtn
         '
-        Me.Button2.BackColor = System.Drawing.Color.Maroon
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.Control
-        Me.Button2.Location = New System.Drawing.Point(253, 341)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(94, 41)
-        Me.Button2.TabIndex = 8
-        Me.Button2.Text = "Add"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.addcustbtn.BackColor = System.Drawing.Color.Maroon
+        Me.addcustbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.addcustbtn.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addcustbtn.ForeColor = System.Drawing.SystemColors.Control
+        Me.addcustbtn.Location = New System.Drawing.Point(253, 341)
+        Me.addcustbtn.Name = "addcustbtn"
+        Me.addcustbtn.Size = New System.Drawing.Size(94, 41)
+        Me.addcustbtn.TabIndex = 8
+        Me.addcustbtn.Text = "Add"
+        Me.addcustbtn.UseVisualStyleBackColor = False
         '
         'addressTbox
         '
@@ -645,216 +855,6 @@ Partial Class Form1
         Me.fnameLabel.TabIndex = 0
         Me.fnameLabel.Text = "First Name"
         '
-        'address
-        '
-        Me.address.AutoSize = True
-        Me.address.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.address.Location = New System.Drawing.Point(29, 206)
-        Me.address.Name = "address"
-        Me.address.Size = New System.Drawing.Size(58, 16)
-        Me.address.TabIndex = 6
-        Me.address.Text = "Address"
-        '
-        'Naddresstbox
-        '
-        Me.Naddresstbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Naddresstbox.Location = New System.Drawing.Point(107, 203)
-        Me.Naddresstbox.Name = "Naddresstbox"
-        Me.Naddresstbox.Size = New System.Drawing.Size(222, 22)
-        Me.Naddresstbox.TabIndex = 7
-        '
-        'loandate
-        '
-        Me.loandate.AutoSize = True
-        Me.loandate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.loandate.Location = New System.Drawing.Point(376, 57)
-        Me.loandate.Name = "loandate"
-        Me.loandate.Size = New System.Drawing.Size(69, 16)
-        Me.loandate.TabIndex = 8
-        Me.loandate.Text = "Loan Date"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(360, 104)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(85, 16)
-        Me.Label11.TabIndex = 9
-        Me.Label11.Text = "Maturity Date"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(369, 158)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(76, 16)
-        Me.Label12.TabIndex = 10
-        Me.Label12.Text = "Expiry Date"
-        '
-        'DateTimeloan
-        '
-        Me.DateTimeloan.CustomFormat = ""
-        Me.DateTimeloan.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimeloan.Location = New System.Drawing.Point(451, 54)
-        Me.DateTimeloan.Name = "DateTimeloan"
-        Me.DateTimeloan.RightToLeftLayout = True
-        Me.DateTimeloan.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimeloan.TabIndex = 11
-        '
-        'DateTimematurity
-        '
-        Me.DateTimematurity.CustomFormat = ""
-        Me.DateTimematurity.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimematurity.Location = New System.Drawing.Point(451, 106)
-        Me.DateTimematurity.Name = "DateTimematurity"
-        Me.DateTimematurity.RightToLeftLayout = True
-        Me.DateTimematurity.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimematurity.TabIndex = 12
-        '
-        'DateTimeexpiry
-        '
-        Me.DateTimeexpiry.CustomFormat = ""
-        Me.DateTimeexpiry.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimeexpiry.Location = New System.Drawing.Point(451, 154)
-        Me.DateTimeexpiry.Name = "DateTimeexpiry"
-        Me.DateTimeexpiry.RightToLeftLayout = True
-        Me.DateTimeexpiry.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimeexpiry.TabIndex = 13
-        '
-        'Panel7
-        '
-        Me.Panel7.BackColor = System.Drawing.Color.Transparent
-        Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel7.Controls.Add(Me.TextBox9)
-        Me.Panel7.Controls.Add(Me.TextBox8)
-        Me.Panel7.Controls.Add(Me.TextBox7)
-        Me.Panel7.Controls.Add(Me.total)
-        Me.Panel7.Controls.Add(Me.Interest)
-        Me.Panel7.Controls.Add(Me.principal)
-        Me.Panel7.Controls.Add(Me.TextBox6)
-        Me.Panel7.Controls.Add(Me.jname)
-        Me.Panel7.Controls.Add(Me.ComboBox1)
-        Me.Panel7.Controls.Add(Me.Jtype)
-        Me.Panel7.Location = New System.Drawing.Point(40, 240)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(624, 186)
-        Me.Panel7.TabIndex = 14
-        '
-        'Jtype
-        '
-        Me.Jtype.AutoSize = True
-        Me.Jtype.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Jtype.Location = New System.Drawing.Point(16, 24)
-        Me.Jtype.Name = "Jtype"
-        Me.Jtype.Size = New System.Drawing.Size(88, 16)
-        Me.Jtype.TabIndex = 15
-        Me.Jtype.Text = "Jewelry Type"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(115, 17)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(212, 24)
-        Me.ComboBox1.TabIndex = 16
-        '
-        'jname
-        '
-        Me.jname.AutoSize = True
-        Me.jname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.jname.Location = New System.Drawing.Point(16, 62)
-        Me.jname.Name = "jname"
-        Me.jname.Size = New System.Drawing.Size(93, 16)
-        Me.jname.TabIndex = 17
-        Me.jname.Text = "Jewelry Name"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(115, 59)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(211, 22)
-        Me.TextBox6.TabIndex = 15
-        '
-        'principal
-        '
-        Me.principal.AutoSize = True
-        Me.principal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.principal.Location = New System.Drawing.Point(367, 20)
-        Me.principal.Name = "principal"
-        Me.principal.Size = New System.Drawing.Size(59, 16)
-        Me.principal.TabIndex = 18
-        Me.principal.Text = "Principal"
-        '
-        'Interest
-        '
-        Me.Interest.AutoSize = True
-        Me.Interest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Interest.Location = New System.Drawing.Point(358, 56)
-        Me.Interest.Name = "Interest"
-        Me.Interest.Size = New System.Drawing.Size(82, 16)
-        Me.Interest.TabIndex = 19
-        Me.Interest.Text = "Interest Rate"
-        '
-        'total
-        '
-        Me.total.AutoSize = True
-        Me.total.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.total.Location = New System.Drawing.Point(381, 87)
-        Me.total.Name = "total"
-        Me.total.Size = New System.Drawing.Size(38, 16)
-        Me.total.TabIndex = 20
-        Me.total.Text = "Total"
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(442, 15)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox7.TabIndex = 15
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(442, 53)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox8.TabIndex = 21
-        '
-        'TextBox9
-        '
-        Me.TextBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(442, 87)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox9.TabIndex = 22
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.Maroon
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(503, 438)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 23
-        Me.Button3.Text = "Cancel"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.Gold
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Location = New System.Drawing.Point(584, 438)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 24
-        Me.Button4.Text = "Confirm"
-        Me.Button4.UseVisualStyleBackColor = False
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -864,7 +864,7 @@ Partial Class Form1
         Me.Controls.Add(Me.panelUp)
         Me.Controls.Add(Me.panel_left)
         Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.AddCustomerPnl)
         Me.Controls.Add(Me.Panel6)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
@@ -875,19 +875,19 @@ Partial Class Form1
         Me.Panel2.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         Me.PanelPawn.ResumeLayout(False)
         Me.PanelPawn.PerformLayout()
         Me.PanelPay.ResumeLayout(False)
         Me.PanelPay.PerformLayout()
         Me.PanelTransactions.ResumeLayout(False)
         Me.PanelTransactions.PerformLayout()
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
+        Me.AddCustomerPnl.ResumeLayout(False)
+        Me.AddCustomerPnl.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -924,7 +924,7 @@ Partial Class Form1
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents AddCust As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Panel5 As Panel
+    Friend WithEvents AddCustomerPnl As Panel
     Friend WithEvents addressTbox As TextBox
     Friend WithEvents contactTbox As TextBox
     Friend WithEvents lnameTbox As TextBox
@@ -933,7 +933,7 @@ Partial Class Form1
     Friend WithEvents contactLabel As Label
     Friend WithEvents lnameLabel As Label
     Friend WithEvents fnameLabel As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents addcustbtn As Button
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Nfnametbox As TextBox
     Friend WithEvents contact As Label
