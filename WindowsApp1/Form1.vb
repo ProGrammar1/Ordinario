@@ -1,5 +1,32 @@
 ﻿Public Class Form1
 
+    Private Sub HandleButtonClick(buttonName As String)
+        Select Case buttonName
+            Case "Trannsactions"
+                ' Code to handle Button1 click
+                Panel4.Visible = True
+                AddCustomerPnl.Visible = True
+                Panel6.Visible = True
+                Pawncards.Visible = False
+
+
+            Case "Pawncards"
+                ' Code to handle Button2 click
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+
+            Case "Button3"
+                ' Code to handle Button3 click
+                Panel1.Visible = True
+                Panel2.Visible = True
+                Panel3.Visible = False
+            Case Else
+                ' Handle other buttons or cases if needed
+        End Select
+    End Sub
+
 
 
 
@@ -15,6 +42,12 @@
     Private Sub btn_transactions_Click(sender As Object, e As EventArgs) Handles btn_transactions.Click
         panelOnButtonCst.Height = btn_transactions.Height
         panelOnButtonCst.Top = btn_transactions.Top
+        HandleButtonClick("Transactions")
+
+
+        PanelTransactions.Visible = True
+
+
 
     End Sub
 
@@ -29,6 +62,17 @@
     Private Sub btnPawnCards_Click(sender As Object, e As EventArgs) Handles btnPawnCards.Click
         panelOnButtonCst.Height = btnPawnCards.Height
         panelOnButtonCst.Top = btnPawnCards.Top
+        HandleButtonClick("Pawncards")
+
+
+        Pawncards.Visible = True
+        Pawncards.Size = PanelTransactions.Size
+        Pawncards.Location = PanelTransactions.Location
+        Pawncards.Anchor = PanelTransactions.Anchor
+        DataGridView2.Rows.Add("2023-04-06", "2023-04-06", "2023-04-06", "1000.00", "Borje", "Ver", "Ring", "Renew")
+
+
+
     End Sub
 
     Private Sub btnTransactRec_Click(sender As Object, e As EventArgs) Handles btnTransactRec.Click
@@ -48,6 +92,8 @@
     Private Sub btn_pawn_Click(sender As Object, e As EventArgs) Handles btn_pawn.Click
         Panel4.Size = PanelTransactions.Size
         Panel4.Visible = True
+        DataGridView1.Rows.Clear()
+
         DataGridView1.Rows.Add("Ver", "Borje", "09380422897", "Pamorangon")
 
         PanelTransactions.Visible = False
@@ -96,6 +142,12 @@
         Ncontacttbox.Text = value3
         Naddresstbox.Text = value4
 
+        jtypebox.Items.Add("Watch")
+        jtypebox.Items.Add("Necklace")
+
+        jtypebox.Items.Add("Ring")
+
+
     End Sub
 
     Private Sub addcustbtn_Click(sender As Object, e As EventArgs) Handles addcustbtn.Click
@@ -115,4 +167,38 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
+
+
+
+    Private Sub Confirm_Click(sender As Object, e As EventArgs) Handles Confirm.Click
+
+        Dim str As String
+
+        str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount ) VALUES ('2023-06-06','2023-06-06','2023-06-06','1000.00')"
+
+
+        Try
+            readQuery(str)
+            MsgBox("Successfully Added")
+            Panel6.Visible = False
+            Panel4.Visible = True
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+
+
+
+
+    End Sub
+
+    Private Sub dataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+        ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
+        If e.ColumnIndex = DataGridView2.Columns("Column8").Index AndAlso e.RowIndex >= 0 Then
+            ' Perform the desired action when the button is clicked
+            MessageBox.Show("Button clicked in row " & e.RowIndex.ToString())
+            ' You can replace MessageBox.Show with your custom function call or any other action you want to perform
+        End If
+    End Sub
+
 End Class
