@@ -107,7 +107,7 @@
 
         Try
             readQuery(str)
-            MsgBox("Successfully Added")
+            MsgBox("Successfully Adde")
             AddCustomerPnl.Visible = False
             Panel4.Visible = True
 
