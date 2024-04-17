@@ -1,5 +1,6 @@
 ﻿Public Class Form1
 
+    Dim total_amntvar As Double
     Private Sub HandleButtonClick(buttonName As String)
         Select Case buttonName
             Case "Trannsactions"
@@ -29,7 +30,13 @@
 
 
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set the default value of DateTimePicker to be four months in advance
+        DateTimematurity.Value = DateTime.Now.AddMonths(1)
+        DateTimeexpiry.Value = DateTime.Now.AddMonths(4)
 
+
+    End Sub
     Private Sub btn_customers_Click(sender As Object, e As EventArgs) Handles btn_customers.Click
         panelOnButtonCst.Height = btn_customers.Height
         panelOnButtonCst.Top = btn_customers.Top
@@ -94,7 +101,16 @@
         Panel4.Visible = True
         DataGridView1.Rows.Clear()
 
-        DataGridView1.Rows.Add("Ver", "Borje", "09380422897", "Pamorangon")
+        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+
+
+        readQuery(customer_data)
+        With cmdRead
+            While .Read
+                DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+            End While
+        End With
+
 
         PanelTransactions.Visible = False
 
@@ -147,6 +163,8 @@
 
         jtypebox.Items.Add("Ring")
 
+        interestRate.Text = "0.03"
+
 
     End Sub
 
@@ -161,11 +179,23 @@
             readQuery(str)
             MsgBox("Successfully Added")
             AddCustomerPnl.Visible = False
-            Panel4.Visible = True
+            DataGridView1.Rows.Clear()
 
+            Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+
+
+            readQuery(customer_data)
+            With cmdRead
+                While .Read
+                    DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+                End While
+            End With
+            Panel4.Visible = True
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
+
+
     End Sub
 
 
@@ -174,17 +204,68 @@
 
         Dim str As String
 
-        str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount ) VALUES ('2023-06-06','2023-06-06','2023-06-06','1000.00')"
+        Dim itmInsrt As String
+
+        Dim pawndate As String = DateTimeloan.Value.ToString("yyyy-MM-dd")
+        Dim mdate As String = DateTimematurity.Value.ToString("yyyy-MM-dd")
+
+        Dim Edate As String = DateTimeexpiry.Value.ToString("yyyy-MM-dd")
+
+
+        Dim itemID As String
+        Dim custID As String
+
+
+
+        itmInsrt = "insert into item(ItemName, ItemValue, ItemType ) values ('" & jewelryname.Text & "' ,'n/a', '" & jtypebox.Text & "' )"
+
+
 
 
         Try
-            readQuery(str)
-            MsgBox("Successfully Added")
-            Panel6.Visible = False
-            Panel4.Visible = True
+            readQuery(itmInsrt)
 
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
+
+
+            Dim itmIDquery As String = "Select ItemID FROM item ORDER BY ItemID DESC LIMIT 1"
+            Dim custIDquery As String = "Select CustID from customers where CustFname = '" & Nfnametbox.Text & "' AND CustLname = '" & Nlnametbox.Text & "' "
+
+
+
+            Try
+                readQuery(itmIDquery)
+                With cmdRead
+                    While .Read
+                        itemID = .GetValue(0)
+
+
+
+                    End While
+                End With
+
+                readQuery(custIDquery)
+                With cmdRead
+                    While .Read
+                        custID = .GetValue(0)
+                    End While
+                End With
+
+
+
+            Catch ex As Exception
+
+            End Try
+            str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount, CustId, ItemID ) VALUES ('" & pawndate & "' ,'" & mdate & "','" & Edate & "' ,'" & total_amount.Text.ToString & "' ,'" & custID & "','" & itemID & "' )"
+
+
+            readQuery(str)
+
+            MsgBox("Successfully Added")
+                Panel6.Visible = False
+                Panel4.Visible = True
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
 
 
@@ -195,10 +276,30 @@
     Private Sub dataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
         ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
         If e.ColumnIndex = DataGridView2.Columns("Column8").Index AndAlso e.RowIndex >= 0 Then
-            ' Perform the desired action when the button is clicked
+            ' Perform the desired action whetn the button is clicked
             MessageBox.Show("Button clicked in row " & e.RowIndex.ToString())
             ' You can replace MessageBox.Show with your custom function call or any other action you want to perform
         End If
     End Sub
 
+    Private Sub principal_amnt_TextChanged(sender As Object, e As EventArgs) Handles principal_amnt.TextChanged
+
+        If String.IsNullOrEmpty(principal_amnt.Text) Then
+
+            total_amount.Text = ""
+
+        Else
+
+
+            Dim principal As Double = Double.Parse(principal_amnt.Text)
+
+            Dim interest As Double = Double.Parse(interestRate.Text)
+            Dim interest_amnt As Double = principal * interest
+            Dim total_amnt As Double = principal + interest_amnt
+            total_amntvar = total_amnt
+            total_amount.Text = total_amnt.ToString
+
+
+        End If
+    End Sub
 End Class

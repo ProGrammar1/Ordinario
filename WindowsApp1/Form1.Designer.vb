@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -52,13 +52,13 @@ Partial Class Form1
         Me.Confirm = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.total_amount = New System.Windows.Forms.TextBox()
+        Me.interestRate = New System.Windows.Forms.TextBox()
+        Me.principal_amnt = New System.Windows.Forms.TextBox()
         Me.total = New System.Windows.Forms.Label()
         Me.Interest = New System.Windows.Forms.Label()
         Me.principal = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.jewelryname = New System.Windows.Forms.TextBox()
         Me.jname = New System.Windows.Forms.Label()
         Me.jtypebox = New System.Windows.Forms.ComboBox()
         Me.Jtype = New System.Windows.Forms.Label()
@@ -332,14 +332,14 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
@@ -423,13 +423,13 @@ Partial Class Form1
         '
         Me.Panel7.BackColor = System.Drawing.Color.Transparent
         Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel7.Controls.Add(Me.TextBox9)
-        Me.Panel7.Controls.Add(Me.TextBox8)
-        Me.Panel7.Controls.Add(Me.TextBox7)
+        Me.Panel7.Controls.Add(Me.total_amount)
+        Me.Panel7.Controls.Add(Me.interestRate)
+        Me.Panel7.Controls.Add(Me.principal_amnt)
         Me.Panel7.Controls.Add(Me.total)
         Me.Panel7.Controls.Add(Me.Interest)
         Me.Panel7.Controls.Add(Me.principal)
-        Me.Panel7.Controls.Add(Me.TextBox6)
+        Me.Panel7.Controls.Add(Me.jewelryname)
         Me.Panel7.Controls.Add(Me.jname)
         Me.Panel7.Controls.Add(Me.jtypebox)
         Me.Panel7.Controls.Add(Me.Jtype)
@@ -438,29 +438,32 @@ Partial Class Form1
         Me.Panel7.Size = New System.Drawing.Size(624, 186)
         Me.Panel7.TabIndex = 14
         '
-        'TextBox9
+        'total_amount
         '
-        Me.TextBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(442, 87)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox9.TabIndex = 22
+        Me.total_amount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.total_amount.Location = New System.Drawing.Point(442, 87)
+        Me.total_amount.Name = "total_amount"
+        Me.total_amount.ReadOnly = True
+        Me.total_amount.Size = New System.Drawing.Size(132, 22)
+        Me.total_amount.TabIndex = 22
         '
-        'TextBox8
+        'interestRate
         '
-        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(442, 53)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox8.TabIndex = 21
+        Me.interestRate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.interestRate.ForeColor = System.Drawing.Color.Yellow
+        Me.interestRate.Location = New System.Drawing.Point(442, 53)
+        Me.interestRate.Name = "interestRate"
+        Me.interestRate.ReadOnly = True
+        Me.interestRate.Size = New System.Drawing.Size(132, 22)
+        Me.interestRate.TabIndex = 21
         '
-        'TextBox7
+        'principal_amnt
         '
-        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(442, 15)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(132, 22)
-        Me.TextBox7.TabIndex = 15
+        Me.principal_amnt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.principal_amnt.Location = New System.Drawing.Point(442, 15)
+        Me.principal_amnt.Name = "principal_amnt"
+        Me.principal_amnt.Size = New System.Drawing.Size(132, 22)
+        Me.principal_amnt.TabIndex = 15
         '
         'total
         '
@@ -492,13 +495,13 @@ Partial Class Form1
         Me.principal.TabIndex = 18
         Me.principal.Text = "Principal"
         '
-        'TextBox6
+        'jewelryname
         '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(115, 59)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(211, 22)
-        Me.TextBox6.TabIndex = 15
+        Me.jewelryname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.jewelryname.Location = New System.Drawing.Point(115, 59)
+        Me.jewelryname.Name = "jewelryname"
+        Me.jewelryname.Size = New System.Drawing.Size(211, 22)
+        Me.jewelryname.TabIndex = 15
         '
         'jname
         '
@@ -542,6 +545,7 @@ Partial Class Form1
         'DateTimematurity
         '
         Me.DateTimematurity.CustomFormat = ""
+        Me.DateTimematurity.Enabled = False
         Me.DateTimematurity.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimematurity.Location = New System.Drawing.Point(451, 106)
         Me.DateTimematurity.Name = "DateTimematurity"
@@ -594,6 +598,7 @@ Partial Class Form1
         Me.Naddresstbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Naddresstbox.Location = New System.Drawing.Point(107, 203)
         Me.Naddresstbox.Name = "Naddresstbox"
+        Me.Naddresstbox.ReadOnly = True
         Me.Naddresstbox.Size = New System.Drawing.Size(222, 22)
         Me.Naddresstbox.TabIndex = 7
         '
@@ -612,6 +617,7 @@ Partial Class Form1
         Me.Ncontacttbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Ncontacttbox.Location = New System.Drawing.Point(107, 152)
         Me.Ncontacttbox.Name = "Ncontacttbox"
+        Me.Ncontacttbox.ReadOnly = True
         Me.Ncontacttbox.Size = New System.Drawing.Size(222, 22)
         Me.Ncontacttbox.TabIndex = 5
         '
@@ -620,6 +626,7 @@ Partial Class Form1
         Me.Nlnametbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Nlnametbox.Location = New System.Drawing.Point(107, 101)
         Me.Nlnametbox.Name = "Nlnametbox"
+        Me.Nlnametbox.ReadOnly = True
         Me.Nlnametbox.Size = New System.Drawing.Size(222, 22)
         Me.Nlnametbox.TabIndex = 4
         '
@@ -628,6 +635,7 @@ Partial Class Form1
         Me.Nfnametbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Nfnametbox.Location = New System.Drawing.Point(107, 54)
         Me.Nfnametbox.Name = "Nfnametbox"
+        Me.Nfnametbox.ReadOnly = True
         Me.Nfnametbox.Size = New System.Drawing.Size(222, 22)
         Me.Nfnametbox.TabIndex = 3
         '
@@ -890,14 +898,14 @@ Partial Class Form1
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView2.ColumnHeadersHeight = 30
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
@@ -969,6 +977,7 @@ Partial Class Form1
         Me.Controls.Add(Me.AddCustomerPnl)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Pawncards)
+        Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1059,15 +1068,15 @@ Partial Class Form1
     Friend WithEvents total As Label
     Friend WithEvents Interest As Label
     Friend WithEvents principal As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents jewelryname As TextBox
     Friend WithEvents jname As Label
     Friend WithEvents jtypebox As ComboBox
     Friend WithEvents Jtype As Label
     Friend WithEvents Confirm As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents total_amount As TextBox
+    Friend WithEvents interestRate As TextBox
+    Friend WithEvents principal_amnt As TextBox
     Friend WithEvents Pawncards As Panel
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents DataGridView2 As DataGridView
