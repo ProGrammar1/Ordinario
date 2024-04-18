@@ -49,6 +49,7 @@
     Private Sub btn_transactions_Click(sender As Object, e As EventArgs) Handles btn_transactions.Click
         panelOnButtonCst.Height = btn_transactions.Height
         panelOnButtonCst.Top = btn_transactions.Top
+        AddCustomerPnl.Visible = False
         HandleButtonClick("Transactions")
 
 
@@ -76,7 +77,32 @@
         Pawncards.Size = PanelTransactions.Size
         Pawncards.Location = PanelTransactions.Location
         Pawncards.Anchor = PanelTransactions.Anchor
-        DataGridView2.Rows.Add("2023-04-06", "2023-04-06", "2023-04-06", "1000.00", "Borje", "Ver", "Ring", "Renew")
+        DataGridView2.Rows.Clear()
+        ItemTypeSearchbox.Items.Clear()
+
+        Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID"
+
+        Try
+            readQuery(itemtypeload)
+
+            With cmdRead
+                While .Read
+                    ItemTypeSearchbox.Items.Add(.GetValue(0))
+                End While
+            End With
+
+            readQuery(pcardload)
+
+            With cmdRead
+                While .Read
+                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                End While
+            End With
+
+        Catch ex As Exception
+
+        End Try
 
 
 
@@ -98,6 +124,9 @@
 
     Private Sub btn_pawn_Click(sender As Object, e As EventArgs) Handles btn_pawn.Click
         Panel4.Size = PanelTransactions.Size
+        Panel4.Anchor = PanelTransactions.Anchor
+        Panel4.Location = PanelTransactions.Location
+
         Panel4.Visible = True
         DataGridView1.Rows.Clear()
 
@@ -158,10 +187,18 @@
         Ncontacttbox.Text = value3
         Naddresstbox.Text = value4
 
-        jtypebox.Items.Add("Watch")
-        jtypebox.Items.Add("Necklace")
+        Dim itemtypes As String = "Select ItemTypeName from itemtypes"
 
-        jtypebox.Items.Add("Ring")
+        Try
+            readQuery(itemtypes)
+            With cmdRead
+                While .Read
+                    jtypebox.Items.Add(.GetValue(0))
+                End While
+            End With
+        Catch ex As Exception
+
+        End Try
 
         interestRate.Text = "0.03"
 
@@ -215,9 +252,21 @@
         Dim itemID As String
         Dim custID As String
 
+        Dim itemtypeidQuery As String = "select ItemTypeID from itemtypes where ItemTypeName = '" & jtypebox.Text & "'"
+        Dim itemtypeid As String
 
+        Try
+            readQuery(itemtypeidQuery)
+            With cmdRead
+                While .Read
+                    itemtypeid = .GetValue(0)
+                End While
+            End With
+        Catch ex As Exception
 
-        itmInsrt = "insert into item(ItemName, ItemValue, ItemType ) values ('" & jewelryname.Text & "' ,'n/a', '" & jtypebox.Text & "' )"
+        End Try
+
+        itmInsrt = "insert into item(ItemName, ItemValue, ItemType ) values ('" & jewelryname.Text & "' ,'n/a', '" & itemtypeid & "' )"
 
 
 
@@ -255,7 +304,7 @@
             Catch ex As Exception
 
             End Try
-            str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount, CustId, ItemID ) VALUES ('" & pawndate & "' ,'" & mdate & "','" & Edate & "' ,'" & total_amount.Text.ToString & "' ,'" & custID & "','" & itemID & "' )"
+            str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, Cnum, Itemnum ) VALUES ('" & pawndate & "' ,'" & mdate & "','" & Edate & "' ,'" & total_amount.Text.ToString & "' ,'" & total_amount.Text.ToString & "','" & custID & "','" & itemID & "' )"
 
 
             readQuery(str)
@@ -302,4 +351,28 @@
 
         End If
     End Sub
+
+    Private Sub ItemTypeSearchbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemTypeSearchbox.SelectedIndexChanged
+
+        DataGridView2.Rows.Clear()
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & ItemTypeSearchbox.Text & "'"
+
+        Try
+            readQuery(pcardload)
+            With cmdRead
+                While .Read
+                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                End While
+            End With
+
+        Catch ex As Exception
+
+
+        End Try
+
+
+
+    End Sub
+
+
 End Class
