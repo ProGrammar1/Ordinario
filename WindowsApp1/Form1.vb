@@ -9,6 +9,7 @@
                 AddCustomerPnl.Visible = True
                 Panel6.Visible = True
                 Pawncards.Visible = False
+                renewal_panel.Visible = False
 
 
             Case "Pawncards"
@@ -17,6 +18,7 @@
                 AddCustomerPnl.Visible = False
                 Panel6.Visible = False
                 PanelTransactions.Visible = False
+                renewal_panel.Visible -= True
 
             Case "Button3"
                 ' Code to handle Button3 click
@@ -32,8 +34,7 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set the default value of DateTimePicker to be four months in advance
-        DateTimematurity.Value = DateTime.Now.AddMonths(1)
-        DateTimeexpiry.Value = DateTime.Now.AddMonths(4)
+
 
 
     End Sub
@@ -78,6 +79,7 @@
         Pawncards.Location = PanelTransactions.Location
         Pawncards.Anchor = PanelTransactions.Anchor
         DataGridView2.Rows.Clear()
+        ItemTypeSearchbox.Text = ""
         ItemTypeSearchbox.Items.Clear()
 
         Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
@@ -187,6 +189,7 @@
         Ncontacttbox.Text = value3
         Naddresstbox.Text = value4
 
+
         Dim itemtypes As String = "Select ItemTypeName from itemtypes"
 
         Try
@@ -199,6 +202,8 @@
         Catch ex As Exception
 
         End Try
+        DateTimematurity.Value = DateTime.Now.AddMonths(1)
+        DateTimeexpiry.Value = DateTime.Now.AddMonths(4)
 
         interestRate.Text = "0.03"
 
@@ -324,11 +329,42 @@
 
     Private Sub dataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
         ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
-        If e.ColumnIndex = DataGridView2.Columns("Column8").Index AndAlso e.RowIndex >= 0 Then
-            ' Perform the desired action whetn the button is clicked
-            MessageBox.Show("Button clicked in row " & e.RowIndex.ToString())
-            ' You can replace MessageBox.Show with your custom function call or any other action you want to perform
-        End If
+        Dim rowIndex As Integer = e.RowIndex
+
+        ' Access the data in the clicked row
+        Dim pawndate As DateTime = DataGridView2.Rows(rowIndex).Cells("pdate_column").Value
+        Dim maturity As DateTime = DataGridView2.Rows(rowIndex).Cells("mdate_column").Value
+        Dim expiry As DateTime = DataGridView2.Rows(rowIndex).Cells("edate_column").Value
+
+
+        Dim curbalance As String = DataGridView2.Rows(rowIndex).Cells("balance_column").Value.ToString()
+        Dim lname As String = DataGridView2.Rows(rowIndex).Cells("lname_column").Value.ToString()
+
+        Dim fname As String = DataGridView2.Rows(rowIndex).Cells("fname_column").Value.ToString()
+        Dim itemname As String = DataGridView2.Rows(rowIndex).Cells("item_column").Value.ToString()
+        Dim itemtype As String = DataGridView2.Rows(rowIndex).Cells("Itype_column").Value.ToString()
+
+        Dim balance_num As Double = Double.Parse(curbalance)
+        Dim total As Double = balance_num + 50.0
+
+
+        Pawncards.Visible = False
+
+        renewal_panel.Visible = True
+
+
+        fnametbox2.Text = fname
+        lnametbox2.Text = lname
+        loandateupdt.Value = pawndate
+        maturityupdt.Value = maturity
+        Expiryupdt.Value = expiry.AddMonths(1)
+
+        jtypebox2.Text = itemtype
+        Jname2.Text = itemname
+        balance.Text = curbalance
+        renewal.Text = "50.00"
+
+        totaltbox2.Text = total.ToString
     End Sub
 
     Private Sub principal_amnt_TextChanged(sender As Object, e As EventArgs) Handles principal_amnt.TextChanged
@@ -373,6 +409,60 @@
 
 
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Dim pcardID As String
+
+        Dim pcardIDquery As String = "SELECT PcardID FROM pawncards, customers, item, itemtypes WHERE CustID = Cnum AND ItemID = Itemnum and ItemType = ItemTypeID and CustLname = '" & lnametbox2.Text & "' and CustFname = '" & fnametbox2.Text & "' ;"
+        Try
+            readQuery(pcardIDquery)
+            With cmdRead
+                While .Read
+                    pcardID = .GetValue(0)
+
+                End While
+            End With
+
+            Dim New_Expiry = Expiryupdt.Value.ToString()
+            Dim PcardUpdt As String = "Update pawncards set ExpiryDate = '" & Expiryupdt.Value.ToString("yyyy-MM-dd") & "', Balance = '" & totaltbox2.Text & "' where PcardID = '" & pcardID & "'"
+
+            readQuery(PcardUpdt)
+
+            MsgBox("Pawn Card Renewed", MsgBoxStyle.MsgBoxRight)
+
+
+            renewal_panel.Visible = False
+            DataGridView2.Rows.Clear()
+            Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID"
+
+            Try
+                readQuery(pcardload)
+                With cmdRead
+                    While .Read
+                        DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                    End While
+                End With
+
+            Catch ex As Exception
+
+
+            End Try
+            Pawncards.Visible = True
+
+
+
+        Catch ex As Exception
+
+        End Try
+
+
+
+    End Sub
+
+
+
+
 
 
 End Class

@@ -24,8 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -100,16 +100,40 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ItemTypeSearchbox = New System.Windows.Forms.ComboBox()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.renewal_panel = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.totaltbox2 = New System.Windows.Forms.TextBox()
+        Me.renewal = New System.Windows.Forms.TextBox()
+        Me.balance = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Jname2 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.jtypebox2 = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Expiryupdt = New System.Windows.Forms.DateTimePicker()
+        Me.maturityupdt = New System.Windows.Forms.DateTimePicker()
+        Me.loandateupdt = New System.Windows.Forms.DateTimePicker()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.lnametbox2 = New System.Windows.Forms.TextBox()
+        Me.fnametbox2 = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.pdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.edate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.loan_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.balance_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.item_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Itype_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.renew_column = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.panel_left.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -122,6 +146,8 @@ Partial Class Form1
         Me.AddCustomerPnl.SuspendLayout()
         Me.Pawncards.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.renewal_panel.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'panel_left
@@ -335,14 +361,14 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
@@ -913,84 +939,343 @@ Partial Class Form1
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridView2.ColumnHeadersHeight = 30
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Column9, Me.Column5, Me.Column6, Me.Column7, Me.Column10, Me.Column8})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pdate_column, Me.mdate_column, Me.edate_column, Me.loan_column, Me.balance_column, Me.lname_column, Me.fname_column, Me.item_column, Me.Itype_column, Me.renew_column})
         Me.DataGridView2.EnableHeadersVisualStyles = False
         Me.DataGridView2.Location = New System.Drawing.Point(6, 117)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(820, 389)
         Me.DataGridView2.TabIndex = 0
         '
-        'DataGridViewTextBoxColumn1
+        'renewal_panel
         '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Pawn Date"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.renewal_panel.Controls.Add(Me.Button2)
+        Me.renewal_panel.Controls.Add(Me.Button4)
+        Me.renewal_panel.Controls.Add(Me.Panel8)
+        Me.renewal_panel.Controls.Add(Me.Expiryupdt)
+        Me.renewal_panel.Controls.Add(Me.maturityupdt)
+        Me.renewal_panel.Controls.Add(Me.loandateupdt)
+        Me.renewal_panel.Controls.Add(Me.Label14)
+        Me.renewal_panel.Controls.Add(Me.Label15)
+        Me.renewal_panel.Controls.Add(Me.Label16)
+        Me.renewal_panel.Controls.Add(Me.lnametbox2)
+        Me.renewal_panel.Controls.Add(Me.fnametbox2)
+        Me.renewal_panel.Controls.Add(Me.Label19)
+        Me.renewal_panel.Controls.Add(Me.Label20)
+        Me.renewal_panel.Location = New System.Drawing.Point(193, 22)
+        Me.renewal_panel.Name = "renewal_panel"
+        Me.renewal_panel.Size = New System.Drawing.Size(835, 563)
+        Me.renewal_panel.TabIndex = 7
         '
-        'DataGridViewTextBoxColumn2
+        'Button2
         '
-        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Maturity Date"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.Button2.BackColor = System.Drawing.Color.Gold
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(652, 444)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 24
+        Me.Button2.Text = "Renew"
+        Me.Button2.UseVisualStyleBackColor = False
         '
-        'DataGridViewTextBoxColumn3
+        'Button4
         '
-        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Expiry Date"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.Button4.BackColor = System.Drawing.Color.Maroon
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Location = New System.Drawing.Point(558, 446)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 23
+        Me.Button4.Text = "Cancel"
+        Me.Button4.UseVisualStyleBackColor = False
         '
-        'DataGridViewTextBoxColumn4
+        'Panel8
         '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Loan Amount"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.Panel8.BackColor = System.Drawing.Color.Transparent
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.totaltbox2)
+        Me.Panel8.Controls.Add(Me.renewal)
+        Me.Panel8.Controls.Add(Me.balance)
+        Me.Panel8.Controls.Add(Me.Label7)
+        Me.Panel8.Controls.Add(Me.Label8)
+        Me.Panel8.Controls.Add(Me.Label9)
+        Me.Panel8.Controls.Add(Me.Jname2)
+        Me.Panel8.Controls.Add(Me.Label10)
+        Me.Panel8.Controls.Add(Me.jtypebox2)
+        Me.Panel8.Controls.Add(Me.Label13)
+        Me.Panel8.Location = New System.Drawing.Point(71, 236)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(659, 196)
+        Me.Panel8.TabIndex = 14
         '
-        'Column9
+        'totaltbox2
         '
-        Me.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column9.HeaderText = "Balance"
-        Me.Column9.Name = "Column9"
+        Me.totaltbox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.totaltbox2.Location = New System.Drawing.Point(442, 87)
+        Me.totaltbox2.Name = "totaltbox2"
+        Me.totaltbox2.ReadOnly = True
+        Me.totaltbox2.Size = New System.Drawing.Size(132, 22)
+        Me.totaltbox2.TabIndex = 22
         '
-        'Column5
+        'renewal
         '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column5.HeaderText = "Last Name"
-        Me.Column5.Name = "Column5"
+        Me.renewal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.renewal.ForeColor = System.Drawing.Color.Yellow
+        Me.renewal.Location = New System.Drawing.Point(442, 53)
+        Me.renewal.Name = "renewal"
+        Me.renewal.ReadOnly = True
+        Me.renewal.Size = New System.Drawing.Size(132, 22)
+        Me.renewal.TabIndex = 21
         '
-        'Column6
+        'balance
         '
-        Me.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column6.HeaderText = "First Name"
-        Me.Column6.Name = "Column6"
+        Me.balance.Enabled = False
+        Me.balance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.balance.Location = New System.Drawing.Point(442, 15)
+        Me.balance.Name = "balance"
+        Me.balance.Size = New System.Drawing.Size(132, 22)
+        Me.balance.TabIndex = 15
         '
-        'Column7
+        'Label7
         '
-        Me.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column7.HeaderText = "Item"
-        Me.Column7.Name = "Column7"
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(381, 87)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(38, 16)
+        Me.Label7.TabIndex = 20
+        Me.Label7.Text = "Total"
         '
-        'Column10
+        'Label8
         '
-        Me.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column10.HeaderText = "Item Type"
-        Me.Column10.Name = "Column10"
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(352, 53)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(87, 16)
+        Me.Label8.TabIndex = 19
+        Me.Label8.Text = "Renewal Fee"
         '
-        'Column8
+        'Label9
         '
-        Me.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column8.HeaderText = "Renew"
-        Me.Column8.Name = "Column8"
-        Me.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(367, 20)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(57, 16)
+        Me.Label9.TabIndex = 18
+        Me.Label9.Text = "Balance"
+        '
+        'Jname2
+        '
+        Me.Jname2.Enabled = False
+        Me.Jname2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Jname2.Location = New System.Drawing.Point(115, 59)
+        Me.Jname2.Name = "Jname2"
+        Me.Jname2.Size = New System.Drawing.Size(211, 22)
+        Me.Jname2.TabIndex = 15
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(16, 62)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(93, 16)
+        Me.Label10.TabIndex = 17
+        Me.Label10.Text = "Jewelry Name"
+        '
+        'jtypebox2
+        '
+        Me.jtypebox2.Enabled = False
+        Me.jtypebox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.jtypebox2.FormattingEnabled = True
+        Me.jtypebox2.Location = New System.Drawing.Point(115, 17)
+        Me.jtypebox2.Name = "jtypebox2"
+        Me.jtypebox2.Size = New System.Drawing.Size(212, 24)
+        Me.jtypebox2.TabIndex = 16
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(16, 24)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(88, 16)
+        Me.Label13.TabIndex = 15
+        Me.Label13.Text = "Jewelry Type"
+        '
+        'Expiryupdt
+        '
+        Me.Expiryupdt.CustomFormat = ""
+        Me.Expiryupdt.Enabled = False
+        Me.Expiryupdt.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.Expiryupdt.Location = New System.Drawing.Point(529, 154)
+        Me.Expiryupdt.Name = "Expiryupdt"
+        Me.Expiryupdt.RightToLeftLayout = True
+        Me.Expiryupdt.Size = New System.Drawing.Size(200, 20)
+        Me.Expiryupdt.TabIndex = 13
+        '
+        'maturityupdt
+        '
+        Me.maturityupdt.CustomFormat = ""
+        Me.maturityupdt.Enabled = False
+        Me.maturityupdt.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.maturityupdt.Location = New System.Drawing.Point(528, 106)
+        Me.maturityupdt.Name = "maturityupdt"
+        Me.maturityupdt.RightToLeftLayout = True
+        Me.maturityupdt.Size = New System.Drawing.Size(200, 20)
+        Me.maturityupdt.TabIndex = 12
+        '
+        'loandateupdt
+        '
+        Me.loandateupdt.CustomFormat = ""
+        Me.loandateupdt.Enabled = False
+        Me.loandateupdt.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.loandateupdt.Location = New System.Drawing.Point(528, 54)
+        Me.loandateupdt.Name = "loandateupdt"
+        Me.loandateupdt.RightToLeftLayout = True
+        Me.loandateupdt.Size = New System.Drawing.Size(200, 20)
+        Me.loandateupdt.TabIndex = 11
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(441, 158)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(76, 16)
+        Me.Label14.TabIndex = 10
+        Me.Label14.Text = "Expiry Date"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(441, 109)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(85, 16)
+        Me.Label15.TabIndex = 9
+        Me.Label15.Text = "Maturity Date"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(442, 57)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(69, 16)
+        Me.Label16.TabIndex = 8
+        Me.Label16.Text = "Loan Date"
+        '
+        'lnametbox2
+        '
+        Me.lnametbox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lnametbox2.Location = New System.Drawing.Point(158, 158)
+        Me.lnametbox2.Name = "lnametbox2"
+        Me.lnametbox2.ReadOnly = True
+        Me.lnametbox2.Size = New System.Drawing.Size(222, 22)
+        Me.lnametbox2.TabIndex = 4
+        '
+        'fnametbox2
+        '
+        Me.fnametbox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fnametbox2.Location = New System.Drawing.Point(158, 104)
+        Me.fnametbox2.Name = "fnametbox2"
+        Me.fnametbox2.ReadOnly = True
+        Me.fnametbox2.Size = New System.Drawing.Size(222, 22)
+        Me.fnametbox2.TabIndex = 3
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(68, 168)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(72, 16)
+        Me.Label19.TabIndex = 1
+        Me.Label19.Text = "Last Name"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(68, 105)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(72, 16)
+        Me.Label20.TabIndex = 0
+        Me.Label20.Text = "First Name"
+        '
+        'pdate_column
+        '
+        Me.pdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.pdate_column.HeaderText = "Pawn Date"
+        Me.pdate_column.Name = "pdate_column"
+        '
+        'mdate_column
+        '
+        Me.mdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.mdate_column.HeaderText = "Maturity Date"
+        Me.mdate_column.Name = "mdate_column"
+        '
+        'edate_column
+        '
+        Me.edate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.edate_column.HeaderText = "Expiry Date"
+        Me.edate_column.Name = "edate_column"
+        '
+        'loan_column
+        '
+        Me.loan_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.loan_column.HeaderText = "Loan Amount"
+        Me.loan_column.Name = "loan_column"
+        '
+        'balance_column
+        '
+        Me.balance_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.balance_column.HeaderText = "Balance"
+        Me.balance_column.Name = "balance_column"
+        '
+        'lname_column
+        '
+        Me.lname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.lname_column.HeaderText = "Last Name"
+        Me.lname_column.Name = "lname_column"
+        '
+        'fname_column
+        '
+        Me.fname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.fname_column.HeaderText = "First Name"
+        Me.fname_column.Name = "fname_column"
+        '
+        'item_column
+        '
+        Me.item_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.item_column.HeaderText = "Item"
+        Me.item_column.Name = "item_column"
+        '
+        'Itype_column
+        '
+        Me.Itype_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Itype_column.HeaderText = "Item Type"
+        Me.Itype_column.Name = "Itype_column"
+        '
+        'renew_column
+        '
+        Me.renew_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.renew_column.HeaderText = "Renew"
+        Me.renew_column.Name = "renew_column"
+        Me.renew_column.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.renew_column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'Form1
         '
@@ -1004,6 +1289,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.panel_left)
         Me.Controls.Add(Me.Pawncards)
+        Me.Controls.Add(Me.renewal_panel)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
@@ -1030,6 +1316,10 @@ Partial Class Form1
         Me.Pawncards.ResumeLayout(False)
         Me.Pawncards.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.renewal_panel.ResumeLayout(False)
+        Me.renewal_panel.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1106,16 +1396,40 @@ Partial Class Form1
     Friend WithEvents principal_amnt As TextBox
     Friend WithEvents Pawncards As Panel
     Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column9 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Column10 As DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As DataGridViewButtonColumn
     Friend WithEvents Label6 As Label
     Friend WithEvents ItemTypeSearchbox As ComboBox
+    Friend WithEvents renewal_panel As Panel
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents totaltbox2 As TextBox
+    Friend WithEvents renewal As TextBox
+    Friend WithEvents balance As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Jname2 As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents jtypebox2 As ComboBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Expiryupdt As DateTimePicker
+    Friend WithEvents maturityupdt As DateTimePicker
+    Friend WithEvents loandateupdt As DateTimePicker
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents lnametbox2 As TextBox
+    Friend WithEvents fnametbox2 As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents pdate_column As DataGridViewTextBoxColumn
+    Friend WithEvents mdate_column As DataGridViewTextBoxColumn
+    Friend WithEvents edate_column As DataGridViewTextBoxColumn
+    Friend WithEvents loan_column As DataGridViewTextBoxColumn
+    Friend WithEvents balance_column As DataGridViewTextBoxColumn
+    Friend WithEvents lname_column As DataGridViewTextBoxColumn
+    Friend WithEvents fname_column As DataGridViewTextBoxColumn
+    Friend WithEvents item_column As DataGridViewTextBoxColumn
+    Friend WithEvents Itype_column As DataGridViewTextBoxColumn
+    Friend WithEvents renew_column As DataGridViewButtonColumn
 End Class
