@@ -1,15 +1,19 @@
-﻿Public Class Form1
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
+Public Class Form1
 
     Dim total_amntvar As Double
     Private Sub HandleButtonClick(buttonName As String)
         Select Case buttonName
-            Case "Trannsactions"
+            Case "Transactions"
                 ' Code to handle Button1 click
                 Panel4.Visible = True
-                AddCustomerPnl.Visible = True
+                AddCustomerPnl.Visible = False
                 Panel6.Visible = True
                 Pawncards.Visible = False
                 renewal_panel.Visible = False
+                Pay.Visible = False
+                paytransact.Visible = False
 
 
             Case "Pawncards"
@@ -19,6 +23,7 @@
                 Panel6.Visible = False
                 PanelTransactions.Visible = False
                 renewal_panel.Visible -= True
+                Pay.Visible = False
 
             Case "Button3"
                 ' Code to handle Button3 click
@@ -51,10 +56,12 @@
         panelOnButtonCst.Height = btn_transactions.Height
         panelOnButtonCst.Top = btn_transactions.Top
         AddCustomerPnl.Visible = False
-        HandleButtonClick("Transactions")
+        Pay.Visible = False
+
 
 
         PanelTransactions.Visible = True
+        HandleButtonClick("Transactions")
 
 
 
@@ -83,7 +90,7 @@
         ItemTypeSearchbox.Items.Clear()
 
         Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
-        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID"
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
 
         Try
             readQuery(itemtypeload)
@@ -315,11 +322,11 @@
             readQuery(str)
 
             MsgBox("Successfully Added")
-                Panel6.Visible = False
-                Panel4.Visible = True
+            Panel6.Visible = False
+            Panel4.Visible = True
 
-            Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Critical)
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
 
 
@@ -391,7 +398,7 @@
     Private Sub ItemTypeSearchbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemTypeSearchbox.SelectedIndexChanged
 
         DataGridView2.Rows.Clear()
-        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & ItemTypeSearchbox.Text & "'"
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & ItemTypeSearchbox.Text & "' and Status = 'Active'"
 
         Try
             readQuery(pcardload)
@@ -434,7 +441,7 @@
 
             renewal_panel.Visible = False
             DataGridView2.Rows.Clear()
-            Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID"
+            Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
 
             Try
                 readQuery(pcardload)
@@ -460,9 +467,196 @@
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        Pay.Size = PanelTransactions.Size
+        Pay.Anchor = PanelTransactions.Anchor
+        Pay.Location = PanelTransactions.Location
+        PanelTransactions.Visible = False
+        Panel4.Visible = False
+        Panel6.Visible = False
+        renewal_panel.Visible = False
+
+        Pay.Visible = True
+        itemtypesearchbox2.Items.Clear()
 
 
 
 
 
+        Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
+        DataGridView3.Rows.Clear()
+
+        Try
+            readQuery(itemtypeload)
+
+            With cmdRead
+                While .Read
+                    itemtypesearchbox2.Items.Add(.GetValue(0))
+                End While
+            End With
+
+            readQuery(pcardload)
+
+            With cmdRead
+                While .Read
+                    DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
+                End While
+            End With
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+
+    Private Sub dataGridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView3.CellContentClick
+        ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
+        Dim rowIndex As Integer = e.RowIndex
+
+        ' Access the data in the clicked row
+        Dim pawndate As DateTime = DataGridView3.Rows(rowIndex).Cells("pawndate2").Value
+        Dim maturity As DateTime = DataGridView3.Rows(rowIndex).Cells("mdate2").Value
+        Dim expiry As DateTime = DataGridView3.Rows(rowIndex).Cells("edate2").Value
+
+
+        Dim curbalance As String = DataGridView3.Rows(rowIndex).Cells("balance2").Value.ToString()
+        Dim lname As String = DataGridView3.Rows(rowIndex).Cells("lname2").Value.ToString()
+
+        Dim fname As String = DataGridView3.Rows(rowIndex).Cells("fname2").Value.ToString()
+        Dim itemname As String = DataGridView3.Rows(rowIndex).Cells("item2").Value.ToString()
+        Dim itemtype As String = DataGridView3.Rows(rowIndex).Cells("itemtype2").Value.ToString()
+
+        'Dim balance_num As Double = Double.Parse(curbalance)
+        'Dim total As Double = balance_num + 50.0
+
+
+        Pay.Visible = False
+
+        paytransact.Visible = True
+
+
+        fname3.Text = fname
+        lname3.Text = lname
+        ldate3.Value = pawndate
+        mdate3.Value = maturity
+        edate3.Value = expiry
+
+
+
+        jtypebox3.Text = itemtype
+        jname3.Text = itemname
+        bduetbox.Text = curbalance
+
+
+
+
+
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim status As String
+        Dim PcardId As String
+        Dim Cnum As String
+        Dim itemnum As String
+        Dim IDquery = "SELECT PcardID, Cnum, Itemnum FROM pawncards, customers, item, itemtypes WHERE CustID = Cnum AND ItemID = Itemnum and ItemType = ItemTypeID and CustLname = '" & lname3.Text & "' and CustFname = '" & fname3.Text & "' and ItemName = '" & jname3.Text & "' ;"
+        Dim currentDate As Date = DateTime.Now
+        Dim sqlFormattedDate As String = currentDate.ToString("yyyy-MM-dd")
+
+
+        Dim amount As Double = Double.Parse(amountpaytbox.Text.ToString)
+        Dim updt_blance As Double = Double.Parse(bduetbox.Text.ToString) - amount
+
+
+        Try
+            If updt_blance < 0 Then
+                MsgBox("Please enter correct amount", MsgBoxStyle.Critical)
+                Return
+
+            ElseIf updt_blance > 0 Then
+
+                status = "Active"
+
+
+            Else
+                status = "Redeemed"
+
+
+            End If
+
+            readQuery(IDquery)
+            With cmdRead
+                While .Read
+                    PcardId = .GetValue(0)
+                    Cnum = .GetValue(1)
+                    itemnum = .GetValue(2)
+                End While
+            End With
+            Dim InsPayments = "Insert into transactions(Cno, Itemno, T_amount, T_Date) values ('" & Cnum & "' ,'" & itemnum & "' ,'" & amount.ToString & "' ,'" & sqlFormattedDate & "'  )"
+            Dim update_balanceQuery As String = "Update pawncards set balance = '" & updt_blance.ToString & "' where PcardID = '" & PcardId & "'"
+            Dim itemstatus As String = "update item set Status = '" & status & "' where ItemID = '" & itemnum & "'"
+            readQuery(InsPayments)
+            readQuery(update_balanceQuery)
+            readQuery(itemstatus)
+
+            MsgBox("Payment Succesful", MsgBoxStyle.MsgBoxRight)
+
+            Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
+            Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
+            DataGridView3.Rows.Clear()
+
+            Try
+                readQuery(itemtypeload)
+
+                With cmdRead
+                    While .Read
+                        itemtypesearchbox2.Items.Add(.GetValue(0))
+                    End While
+                End With
+
+                readQuery(pcardload)
+
+                With cmdRead
+                    While .Read
+                        DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
+                    End While
+                End With
+
+
+            Catch ex As Exception
+
+            End Try
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
+
+        paytransact.Visible = False
+        Pay.Visible = True
+
+    End Sub
+
+    Private Sub itemtypesearchbox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles itemtypesearchbox2.SelectedIndexChanged
+
+        DataGridView3.Rows.Clear()
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & itemtypesearchbox2.Text & "' and Status = 'Active'"
+
+        Try
+            readQuery(pcardload)
+            With cmdRead
+                While .Read
+                    DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
+                End While
+            End With
+
+        Catch ex As Exception
+
+
+        End Try
+
+    End Sub
 End Class
