@@ -397,21 +397,8 @@ Public Class Form1
 
     Private Sub ItemTypeSearchbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemTypeSearchbox.SelectedIndexChanged
 
-        DataGridView2.Rows.Clear()
-        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & ItemTypeSearchbox.Text & "' and Status = 'Active'"
+        LoadPcards()
 
-        Try
-            readQuery(pcardload)
-            With cmdRead
-                While .Read
-                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
-                End While
-            End With
-
-        Catch ex As Exception
-
-
-        End Try
 
 
 
@@ -658,5 +645,58 @@ Public Class Form1
 
         End Try
 
+    End Sub
+
+    Private Sub searchItemname_TextChanged(sender As Object, e As EventArgs) Handles searchItemname.TextChanged
+        LoadPcards()
+
+    End Sub
+
+    Private Sub searchLname_TextChanged(sender As Object, e As EventArgs) Handles searchLname.TextChanged
+        LoadPcards()
+
+    End Sub
+
+    Private Sub searchFname_TextChanged(sender As Object, e As EventArgs) Handles searchFname.TextChanged
+
+        LoadPcards()
+
+    End Sub
+
+    Private Sub LoadPcards()
+        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID  and Status = 'Active'"
+
+
+        If Not String.IsNullOrEmpty(searchLname.Text) Then
+            pcardload &= "and CustLname LIKE '" & searchLname.Text & "'"
+        End If
+
+        If Not String.IsNullOrEmpty(searchFname.Text) Then
+            pcardload &= "and CustFname LIKE '" & searchFname.Text & "'"
+        End If
+
+        If Not String.IsNullOrEmpty(searchItemname.Text) Then
+            pcardload &= "and ItemName LIKE '" & searchItemname.Text & "'"
+        End If
+
+        If ItemTypeSearchbox.SelectedIndex <> -1 Then
+            pcardload &= "and ItemTypeName = '" & ItemTypeSearchbox.Text & "'"
+        End If
+
+        DataGridView2.Rows.Clear()
+
+        Try
+            readQuery(pcardload)
+            With cmdRead
+                While .Read
+
+
+                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+
+                End While
+            End With
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
