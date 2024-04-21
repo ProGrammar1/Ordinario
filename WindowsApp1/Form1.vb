@@ -396,8 +396,7 @@ Public Class Form1
     End Sub
 
     Private Sub ItemTypeSearchbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemTypeSearchbox.SelectedIndexChanged
-
-        LoadPcards()
+        LoadPcards(DataGridView2, searchLname.Text, searchFname.Text, searchItemname.Text, ItemTypeSearchbox.Text, "Renew")
 
 
 
@@ -469,6 +468,7 @@ Public Class Form1
 
 
 
+        DataGridView3.Rows.Clear()
 
 
         Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
@@ -629,61 +629,49 @@ Public Class Form1
 
     Private Sub itemtypesearchbox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles itemtypesearchbox2.SelectedIndexChanged
 
-        DataGridView3.Rows.Clear()
-        Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and ItemTypeName = '" & itemtypesearchbox2.Text & "' and Status = 'Active'"
+        LoadPcards(DataGridView3, lnamesearch2.Text, fnamesearch2.Text, itemnamesearch2.Text, itemtypesearchbox2.Text, "Pay")
 
-        Try
-            readQuery(pcardload)
-            With cmdRead
-                While .Read
-                    DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
-                End While
-            End With
-
-        Catch ex As Exception
-
-
-        End Try
 
     End Sub
 
     Private Sub searchItemname_TextChanged(sender As Object, e As EventArgs) Handles searchItemname.TextChanged
-        LoadPcards()
+        LoadPcards(DataGridView2, searchLname.Text, searchFname.Text, searchItemname.Text, ItemTypeSearchbox.Text, "Renew")
 
     End Sub
 
     Private Sub searchLname_TextChanged(sender As Object, e As EventArgs) Handles searchLname.TextChanged
-        LoadPcards()
+        LoadPcards(DataGridView2, searchLname.Text, searchFname.Text, searchItemname.Text, ItemTypeSearchbox.Text, "Renew")
 
     End Sub
 
     Private Sub searchFname_TextChanged(sender As Object, e As EventArgs) Handles searchFname.TextChanged
 
-        LoadPcards()
+        LoadPcards(DataGridView2, searchLname.Text, searchFname.Text, searchItemname.Text, ItemTypeSearchbox.Text, "Renew")
+
 
     End Sub
 
-    Private Sub LoadPcards()
+    Private Sub LoadPcards(ByVal dgv As DataGridView, ByVal lnamesearch As String, ByVal fnamesearch As String, ByVal itemsearch As String, ByVal itemtypesearch As String, ByVal method As String)
         Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID  and Status = 'Active'"
 
 
-        If Not String.IsNullOrEmpty(searchLname.Text) Then
-            pcardload &= "and CustLname LIKE '" & searchLname.Text & "'"
+        If Not String.IsNullOrEmpty(lnamesearch) Then
+            pcardload &= "and CustLname LIKE '" & lnamesearch & "'"
         End If
 
-        If Not String.IsNullOrEmpty(searchFname.Text) Then
-            pcardload &= "and CustFname LIKE '" & searchFname.Text & "'"
+        If Not String.IsNullOrEmpty(fnamesearch) Then
+            pcardload &= "and CustFname LIKE '" & fnamesearch & "'"
         End If
 
-        If Not String.IsNullOrEmpty(searchItemname.Text) Then
-            pcardload &= "and ItemName LIKE '" & searchItemname.Text & "'"
+        If Not String.IsNullOrEmpty(itemsearch) Then
+            pcardload &= "and ItemName LIKE '" & itemsearch & "'"
         End If
 
         If ItemTypeSearchbox.SelectedIndex <> -1 Then
-            pcardload &= "and ItemTypeName = '" & ItemTypeSearchbox.Text & "'"
+            pcardload &= "and ItemTypeName = '" & itemtypesearch & "'"
         End If
 
-        DataGridView2.Rows.Clear()
+        dgv.Rows.Clear()
 
         Try
             readQuery(pcardload)
@@ -691,12 +679,27 @@ Public Class Form1
                 While .Read
 
 
-                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                    dgv.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), method)
 
                 End While
             End With
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub lnamesearch2_TextChanged(sender As Object, e As EventArgs) Handles lnamesearch2.TextChanged
+        LoadPcards(DataGridView3, lnamesearch2.Text, fnamesearch2.Text, itemnamesearch2.Text, itemtypesearchbox2.Text, "Pay")
+
+    End Sub
+
+    Private Sub fnamesearch2_TextChanged(sender As Object, e As EventArgs) Handles fnamesearch2.TextChanged
+        LoadPcards(DataGridView3, lnamesearch2.Text, fnamesearch2.Text, itemnamesearch2.Text, itemtypesearchbox2.Text, "Pay")
+
+    End Sub
+
+    Private Sub itemnamesearch2_TextChanged(sender As Object, e As EventArgs) Handles itemnamesearch2.TextChanged
+        LoadPcards(DataGridView3, lnamesearch2.Text, fnamesearch2.Text, itemnamesearch2.Text, itemtypesearchbox2.Text, "Pay")
+
     End Sub
 End Class

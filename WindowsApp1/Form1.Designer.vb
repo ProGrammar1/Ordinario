@@ -24,9 +24,9 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -177,6 +177,12 @@ Partial Class Form1
         Me.fname3 = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
+        Me.itemnamesearch2 = New System.Windows.Forms.TextBox()
+        Me.lnamesearch2 = New System.Windows.Forms.TextBox()
+        Me.fnamesearch2 = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
         Me.panel_left.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -408,14 +414,14 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
@@ -1043,14 +1049,14 @@ Partial Class Form1
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
         Me.DataGridView2.ColumnHeadersHeight = 30
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pdate_column, Me.mdate_column, Me.edate_column, Me.loan_column, Me.balance_column, Me.lname_column, Me.fname_column, Me.item_column, Me.Itype_column, Me.renew_column})
@@ -1383,6 +1389,12 @@ Partial Class Form1
         '
         'Pay
         '
+        Me.Pay.Controls.Add(Me.Label32)
+        Me.Pay.Controls.Add(Me.Label31)
+        Me.Pay.Controls.Add(Me.Label30)
+        Me.Pay.Controls.Add(Me.fnamesearch2)
+        Me.Pay.Controls.Add(Me.lnamesearch2)
+        Me.Pay.Controls.Add(Me.itemnamesearch2)
         Me.Pay.Controls.Add(Me.Label17)
         Me.Pay.Controls.Add(Me.itemtypesearchbox2)
         Me.Pay.Controls.Add(Me.DataGridView3)
@@ -1396,7 +1408,7 @@ Partial Class Form1
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(22, 48)
+        Me.Label17.Location = New System.Drawing.Point(510, 72)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(79, 20)
         Me.Label17.TabIndex = 2
@@ -1405,7 +1417,7 @@ Partial Class Form1
         'itemtypesearchbox2
         '
         Me.itemtypesearchbox2.FormattingEnabled = True
-        Me.itemtypesearchbox2.Location = New System.Drawing.Point(117, 49)
+        Me.itemtypesearchbox2.Location = New System.Drawing.Point(611, 71)
         Me.itemtypesearchbox2.Name = "itemtypesearchbox2"
         Me.itemtypesearchbox2.Size = New System.Drawing.Size(170, 21)
         Me.itemtypesearchbox2.TabIndex = 1
@@ -1414,14 +1426,14 @@ Partial Class Form1
         '
         Me.DataGridView3.AllowUserToAddRows = False
         Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
         Me.DataGridView3.ColumnHeadersHeight = 30
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pawndate2, Me.mdate2, Me.edate2, Me.loan2, Me.balance2, Me.lname2, Me.fname2, Me.item2, Me.itemtype2, Me.pay_column})
@@ -1730,6 +1742,57 @@ Partial Class Form1
         Me.Label29.TabIndex = 0
         Me.Label29.Text = "First Name"
         '
+        'itemnamesearch2
+        '
+        Me.itemnamesearch2.Location = New System.Drawing.Point(611, 28)
+        Me.itemnamesearch2.Name = "itemnamesearch2"
+        Me.itemnamesearch2.Size = New System.Drawing.Size(170, 20)
+        Me.itemnamesearch2.TabIndex = 3
+        '
+        'lnamesearch2
+        '
+        Me.lnamesearch2.Location = New System.Drawing.Point(138, 29)
+        Me.lnamesearch2.Name = "lnamesearch2"
+        Me.lnamesearch2.Size = New System.Drawing.Size(170, 20)
+        Me.lnamesearch2.TabIndex = 4
+        '
+        'fnamesearch2
+        '
+        Me.fnamesearch2.Location = New System.Drawing.Point(138, 78)
+        Me.fnamesearch2.Name = "fnamesearch2"
+        Me.fnamesearch2.Size = New System.Drawing.Size(170, 20)
+        Me.fnamesearch2.TabIndex = 5
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(510, 28)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(83, 20)
+        Me.Label30.TabIndex = 6
+        Me.Label30.Text = "ItemName"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(41, 76)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(86, 20)
+        Me.Label31.TabIndex = 7
+        Me.Label31.Text = "First Name"
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Location = New System.Drawing.Point(41, 29)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(86, 20)
+        Me.Label32.TabIndex = 8
+        Me.Label32.Text = "Last Name"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1743,8 +1806,8 @@ Partial Class Form1
         Me.Controls.Add(Me.panel_left)
         Me.Controls.Add(Me.Pawncards)
         Me.Controls.Add(Me.renewal_panel)
-        Me.Controls.Add(Me.paytransact)
         Me.Controls.Add(Me.Pay)
+        Me.Controls.Add(Me.paytransact)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
@@ -1936,4 +1999,10 @@ Partial Class Form1
     Friend WithEvents searchItemname As TextBox
     Friend WithEvents searchFname As TextBox
     Friend WithEvents searchLname As TextBox
+    Friend WithEvents Label30 As Label
+    Friend WithEvents fnamesearch2 As TextBox
+    Friend WithEvents lnamesearch2 As TextBox
+    Friend WithEvents itemnamesearch2 As TextBox
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Label31 As Label
 End Class
