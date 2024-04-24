@@ -25,11 +25,16 @@ Public Class Form1
                 renewal_panel.Visible -= True
                 Pay.Visible = False
 
-            Case "Button3"
+            Case "Customers"
                 ' Code to handle Button3 click
-                Panel1.Visible = True
-                Panel2.Visible = True
-                Panel3.Visible = False
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible -= False
+                Pay.Visible = False
+                Panel5.Visible = True
+
             Case Else
                 ' Handle other buttons or cases if needed
         End Select
@@ -39,13 +44,36 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set the default value of DateTimePicker to be four months in advance
+        Panel4.Visible = false
+        AddCustomerPnl.Visible = False
+        Panel6.Visible = False
+        Pawncards.Visible = False
+        renewal_panel.Visible = False
+        Pay.Visible = False
+        paytransact.Visible = False
+        PanelTransactions.Visible = True
 
 
 
     End Sub
     Private Sub btn_customers_Click(sender As Object, e As EventArgs) Handles btn_customers.Click
+        HandleButtonClick("Customers")
         panelOnButtonCst.Height = btn_customers.Height
         panelOnButtonCst.Top = btn_customers.Top
+
+        DataGridView4.Rows.Clear()
+
+        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+
+
+        readQuery(customer_data)
+        With cmdRead
+            While .Read
+                DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+            End While
+        End With
+
+
 
 
 
@@ -455,15 +483,7 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Pay.Size = PanelTransactions.Size
-        Pay.Anchor = PanelTransactions.Anchor
-        Pay.Location = PanelTransactions.Location
-        PanelTransactions.Visible = False
-        Panel4.Visible = False
-        Panel6.Visible = False
-        renewal_panel.Visible = False
 
-        Pay.Visible = True
         itemtypesearchbox2.Items.Clear()
 
 
@@ -491,6 +511,17 @@ Public Class Form1
                     DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
                 End While
             End With
+
+
+            Pay.Size = PanelTransactions.Size
+            Pay.Anchor = PanelTransactions.Anchor
+            Pay.Location = PanelTransactions.Location
+            PanelTransactions.Visible = False
+            Panel4.Visible = False
+            Panel6.Visible = False
+            renewal_panel.Visible = False
+
+            Pay.Visible = True
 
         Catch ex As Exception
 
@@ -656,15 +687,15 @@ Public Class Form1
 
 
         If Not String.IsNullOrEmpty(lnamesearch) Then
-            pcardload &= "and CustLname LIKE '" & lnamesearch & "'"
+            pcardload &= "and CustLname LIKE '%" & lnamesearch & "%'"
         End If
 
         If Not String.IsNullOrEmpty(fnamesearch) Then
-            pcardload &= "and CustFname LIKE '" & fnamesearch & "'"
+            pcardload &= "and CustFname LIKE '%" & fnamesearch & "%'"
         End If
 
         If Not String.IsNullOrEmpty(itemsearch) Then
-            pcardload &= "and ItemName LIKE '" & itemsearch & "'"
+            pcardload &= "and ItemName LIKE '%" & itemsearch & "%'"
         End If
 
         If ItemTypeSearchbox.SelectedIndex <> -1 Then
