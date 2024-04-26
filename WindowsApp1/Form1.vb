@@ -1,8 +1,16 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Runtime.InteropServices
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class Form1
 
     Dim total_amntvar As Double
+
+    <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
+    Private Shared Sub ReleaseCapture()
+    End Sub
+    <DllImport("user32.DLL", EntryPoint:="SendMessage")>
+    Private Shared Sub SendMessage(hWnd As IntPtr, wMsg As Integer, wParam As Integer, lParam As Integer)
+    End Sub
     Private Sub HandleButtonClick(buttonName As String)
         Select Case buttonName
             Case "Transactions"
@@ -732,5 +740,17 @@ Public Class Form1
     Private Sub itemnamesearch2_TextChanged(sender As Object, e As EventArgs) Handles itemnamesearch2.TextChanged
         LoadPcards(DataGridView3, lnamesearch2.Text, fnamesearch2.Text, itemnamesearch2.Text, itemtypesearchbox2.Text, "Pay")
 
+    End Sub
+
+
+
+    Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112&, &HF012&, 0)
+    End Sub
+
+    Private Sub PanelTransactions_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelTransactions.MouseMove
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 End Class
