@@ -24,10 +24,10 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -44,7 +44,6 @@ Partial Class Form1
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.AddCust = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -108,16 +107,6 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ItemTypeSearchbox = New System.Windows.Forms.ComboBox()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.pdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.mdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.edate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.loan_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.balance_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.item_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Itype_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.renew_column = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.renewal_panel = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -186,12 +175,25 @@ Partial Class Form1
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.AddCust = New System.Windows.Forms.Button()
         Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.pdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mdate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.edate_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.loan_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.balance_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fname_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.item_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Itype_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.renew_column = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.auction = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Edit = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.panel_left.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -302,7 +304,7 @@ Partial Class Form1
         Me.btnTransactRec.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnTransactRec.ForeColor = System.Drawing.SystemColors.Control
         Me.btnTransactRec.Image = CType(resources.GetObject("btnTransactRec.Image"), System.Drawing.Image)
-        Me.btnTransactRec.Location = New System.Drawing.Point(0, 313)
+        Me.btnTransactRec.Location = New System.Drawing.Point(0, 318)
         Me.btnTransactRec.Name = "btnTransactRec"
         Me.btnTransactRec.Padding = New System.Windows.Forms.Padding(12, 0, 0, 0)
         Me.btnTransactRec.Size = New System.Drawing.Size(200, 43)
@@ -393,7 +395,6 @@ Partial Class Form1
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.TextBox1)
-        Me.Panel4.Controls.Add(Me.AddCust)
         Me.Panel4.Controls.Add(Me.DataGridView1)
         Me.Panel4.Location = New System.Drawing.Point(193, 22)
         Me.Panel4.Name = "Panel4"
@@ -403,43 +404,30 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(540, 28)
+        Me.TextBox1.Location = New System.Drawing.Point(611, 59)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(175, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(211, 20)
         Me.TextBox1.TabIndex = 1
-        '
-        'AddCust
-        '
-        Me.AddCust.BackColor = System.Drawing.Color.Maroon
-        Me.AddCust.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.AddCust.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AddCust.ForeColor = System.Drawing.SystemColors.Control
-        Me.AddCust.Location = New System.Drawing.Point(722, 21)
-        Me.AddCust.Name = "AddCust"
-        Me.AddCust.Size = New System.Drawing.Size(100, 33)
-        Me.AddCust.TabIndex = 2
-        Me.AddCust.Text = "New"
-        Me.AddCust.UseVisualStyleBackColor = False
         '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
         Me.DataGridView1.EnableHeadersVisualStyles = False
-        Me.DataGridView1.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 96)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(816, 385)
+        Me.DataGridView1.Size = New System.Drawing.Size(816, 435)
         Me.DataGridView1.TabIndex = 0
         '
         'Column1
@@ -564,7 +552,7 @@ Partial Class Form1
         Me.total.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.total.Location = New System.Drawing.Point(381, 87)
         Me.total.Name = "total"
-        Me.total.Size = New System.Drawing.Size(38, 16)
+        Me.total.Size = New System.Drawing.Size(39, 16)
         Me.total.TabIndex = 20
         Me.total.Text = "Total"
         '
@@ -574,7 +562,7 @@ Partial Class Form1
         Me.Interest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Interest.Location = New System.Drawing.Point(358, 56)
         Me.Interest.Name = "Interest"
-        Me.Interest.Size = New System.Drawing.Size(82, 16)
+        Me.Interest.Size = New System.Drawing.Size(83, 16)
         Me.Interest.TabIndex = 19
         Me.Interest.Text = "Interest Rate"
         '
@@ -584,7 +572,7 @@ Partial Class Form1
         Me.principal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.principal.Location = New System.Drawing.Point(367, 20)
         Me.principal.Name = "principal"
-        Me.principal.Size = New System.Drawing.Size(59, 16)
+        Me.principal.Size = New System.Drawing.Size(60, 16)
         Me.principal.TabIndex = 18
         Me.principal.Text = "Principal"
         '
@@ -602,7 +590,7 @@ Partial Class Form1
         Me.jname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.jname.Location = New System.Drawing.Point(16, 62)
         Me.jname.Name = "jname"
-        Me.jname.Size = New System.Drawing.Size(93, 16)
+        Me.jname.Size = New System.Drawing.Size(94, 16)
         Me.jname.TabIndex = 17
         Me.jname.Text = "Jewelry Name"
         '
@@ -621,7 +609,7 @@ Partial Class Form1
         Me.Jtype.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Jtype.Location = New System.Drawing.Point(16, 24)
         Me.Jtype.Name = "Jtype"
-        Me.Jtype.Size = New System.Drawing.Size(88, 16)
+        Me.Jtype.Size = New System.Drawing.Size(89, 16)
         Me.Jtype.TabIndex = 15
         Me.Jtype.Text = "Jewelry Type"
         '
@@ -662,7 +650,7 @@ Partial Class Form1
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.Location = New System.Drawing.Point(441, 158)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(76, 16)
+        Me.Label12.Size = New System.Drawing.Size(77, 16)
         Me.Label12.TabIndex = 10
         Me.Label12.Text = "Expiry Date"
         '
@@ -672,7 +660,7 @@ Partial Class Form1
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(441, 109)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(85, 16)
+        Me.Label11.Size = New System.Drawing.Size(86, 16)
         Me.Label11.TabIndex = 9
         Me.Label11.Text = "Maturity Date"
         '
@@ -682,7 +670,7 @@ Partial Class Form1
         Me.loandate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.loandate.Location = New System.Drawing.Point(442, 57)
         Me.loandate.Name = "loandate"
-        Me.loandate.Size = New System.Drawing.Size(69, 16)
+        Me.loandate.Size = New System.Drawing.Size(70, 16)
         Me.loandate.TabIndex = 8
         Me.loandate.Text = "Loan Date"
         '
@@ -701,7 +689,7 @@ Partial Class Form1
         Me.address.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.address.Location = New System.Drawing.Point(70, 206)
         Me.address.Name = "address"
-        Me.address.Size = New System.Drawing.Size(58, 16)
+        Me.address.Size = New System.Drawing.Size(59, 16)
         Me.address.TabIndex = 6
         Me.address.Text = "Address"
         '
@@ -738,7 +726,7 @@ Partial Class Form1
         Me.contact.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.contact.Location = New System.Drawing.Point(68, 155)
         Me.contact.Name = "contact"
-        Me.contact.Size = New System.Drawing.Size(52, 16)
+        Me.contact.Size = New System.Drawing.Size(53, 16)
         Me.contact.TabIndex = 2
         Me.contact.Text = "Contact"
         '
@@ -748,7 +736,7 @@ Partial Class Form1
         Me.lname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lname.Location = New System.Drawing.Point(68, 101)
         Me.lname.Name = "lname"
-        Me.lname.Size = New System.Drawing.Size(72, 16)
+        Me.lname.Size = New System.Drawing.Size(73, 16)
         Me.lname.TabIndex = 1
         Me.lname.Text = "Last Name"
         '
@@ -758,7 +746,7 @@ Partial Class Form1
         Me.fname.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.fname.Location = New System.Drawing.Point(68, 57)
         Me.fname.Name = "fname"
-        Me.fname.Size = New System.Drawing.Size(72, 16)
+        Me.fname.Size = New System.Drawing.Size(73, 16)
         Me.fname.TabIndex = 0
         Me.fname.Text = "First Name"
         '
@@ -1060,84 +1048,22 @@ Partial Class Form1
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView2.ColumnHeadersHeight = 30
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pdate_column, Me.mdate_column, Me.edate_column, Me.loan_column, Me.balance_column, Me.lname_column, Me.fname_column, Me.item_column, Me.Itype_column, Me.renew_column})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pdate_column, Me.mdate_column, Me.edate_column, Me.loan_column, Me.balance_column, Me.lname_column, Me.fname_column, Me.item_column, Me.Itype_column, Me.renew_column, Me.auction})
         Me.DataGridView2.EnableHeadersVisualStyles = False
         Me.DataGridView2.Location = New System.Drawing.Point(6, 117)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(820, 434)
         Me.DataGridView2.TabIndex = 0
-        '
-        'pdate_column
-        '
-        Me.pdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.pdate_column.HeaderText = "Pawn Date"
-        Me.pdate_column.Name = "pdate_column"
-        '
-        'mdate_column
-        '
-        Me.mdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.mdate_column.HeaderText = "Maturity Date"
-        Me.mdate_column.Name = "mdate_column"
-        '
-        'edate_column
-        '
-        Me.edate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.edate_column.HeaderText = "Expiry Date"
-        Me.edate_column.Name = "edate_column"
-        '
-        'loan_column
-        '
-        Me.loan_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.loan_column.HeaderText = "Loan Amount"
-        Me.loan_column.Name = "loan_column"
-        '
-        'balance_column
-        '
-        Me.balance_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.balance_column.HeaderText = "Balance"
-        Me.balance_column.Name = "balance_column"
-        '
-        'lname_column
-        '
-        Me.lname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.lname_column.HeaderText = "Last Name"
-        Me.lname_column.Name = "lname_column"
-        '
-        'fname_column
-        '
-        Me.fname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.fname_column.HeaderText = "First Name"
-        Me.fname_column.Name = "fname_column"
-        '
-        'item_column
-        '
-        Me.item_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.item_column.HeaderText = "Item"
-        Me.item_column.Name = "item_column"
-        '
-        'Itype_column
-        '
-        Me.Itype_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Itype_column.HeaderText = "Item Type"
-        Me.Itype_column.Name = "Itype_column"
-        '
-        'renew_column
-        '
-        Me.renew_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.renew_column.HeaderText = "Renew"
-        Me.renew_column.Name = "renew_column"
-        Me.renew_column.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.renew_column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'renewal_panel
         '
@@ -1234,7 +1160,7 @@ Partial Class Form1
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(381, 87)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(38, 16)
+        Me.Label7.Size = New System.Drawing.Size(39, 16)
         Me.Label7.TabIndex = 20
         Me.Label7.Text = "Total"
         '
@@ -1244,7 +1170,7 @@ Partial Class Form1
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(352, 53)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(87, 16)
+        Me.Label8.Size = New System.Drawing.Size(88, 16)
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Renewal Fee"
         '
@@ -1254,7 +1180,7 @@ Partial Class Form1
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(367, 20)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(57, 16)
+        Me.Label9.Size = New System.Drawing.Size(58, 16)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = "Balance"
         '
@@ -1273,7 +1199,7 @@ Partial Class Form1
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(16, 62)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(93, 16)
+        Me.Label10.Size = New System.Drawing.Size(94, 16)
         Me.Label10.TabIndex = 17
         Me.Label10.Text = "Jewelry Name"
         '
@@ -1293,7 +1219,7 @@ Partial Class Form1
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(16, 24)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(88, 16)
+        Me.Label13.Size = New System.Drawing.Size(89, 16)
         Me.Label13.TabIndex = 15
         Me.Label13.Text = "Jewelry Type"
         '
@@ -1336,7 +1262,7 @@ Partial Class Form1
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(441, 158)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(76, 16)
+        Me.Label14.Size = New System.Drawing.Size(77, 16)
         Me.Label14.TabIndex = 10
         Me.Label14.Text = "Expiry Date"
         '
@@ -1346,7 +1272,7 @@ Partial Class Form1
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.Location = New System.Drawing.Point(441, 109)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(85, 16)
+        Me.Label15.Size = New System.Drawing.Size(86, 16)
         Me.Label15.TabIndex = 9
         Me.Label15.Text = "Maturity Date"
         '
@@ -1356,7 +1282,7 @@ Partial Class Form1
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(442, 57)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(69, 16)
+        Me.Label16.Size = New System.Drawing.Size(70, 16)
         Me.Label16.TabIndex = 8
         Me.Label16.Text = "Loan Date"
         '
@@ -1384,7 +1310,7 @@ Partial Class Form1
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.Location = New System.Drawing.Point(68, 168)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(72, 16)
+        Me.Label19.Size = New System.Drawing.Size(73, 16)
         Me.Label19.TabIndex = 1
         Me.Label19.Text = "Last Name"
         '
@@ -1394,7 +1320,7 @@ Partial Class Form1
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(68, 105)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(72, 16)
+        Me.Label20.Size = New System.Drawing.Size(73, 16)
         Me.Label20.TabIndex = 0
         Me.Label20.Text = "First Name"
         '
@@ -1488,14 +1414,14 @@ Partial Class Form1
         '
         Me.DataGridView3.AllowUserToAddRows = False
         Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridView3.ColumnHeadersHeight = 30
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pawndate2, Me.mdate2, Me.edate2, Me.loan2, Me.balance2, Me.lname2, Me.fname2, Me.item2, Me.itemtype2, Me.pay_column})
@@ -1650,7 +1576,7 @@ Partial Class Form1
         Me.AmountPay.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AmountPay.Location = New System.Drawing.Point(352, 53)
         Me.AmountPay.Name = "AmountPay"
-        Me.AmountPay.Size = New System.Drawing.Size(79, 16)
+        Me.AmountPay.Size = New System.Drawing.Size(80, 16)
         Me.AmountPay.TabIndex = 19
         Me.AmountPay.Text = "Amount Pay"
         '
@@ -1660,7 +1586,7 @@ Partial Class Form1
         Me.Bdue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Bdue.Location = New System.Drawing.Point(351, 23)
         Me.Bdue.Name = "Bdue"
-        Me.Bdue.Size = New System.Drawing.Size(85, 16)
+        Me.Bdue.Size = New System.Drawing.Size(86, 16)
         Me.Bdue.TabIndex = 18
         Me.Bdue.Text = "Balance Due"
         '
@@ -1679,7 +1605,7 @@ Partial Class Form1
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.Location = New System.Drawing.Point(16, 62)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(93, 16)
+        Me.Label23.Size = New System.Drawing.Size(94, 16)
         Me.Label23.TabIndex = 17
         Me.Label23.Text = "Jewelry Name"
         '
@@ -1699,7 +1625,7 @@ Partial Class Form1
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.Location = New System.Drawing.Point(16, 24)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(88, 16)
+        Me.Label24.Size = New System.Drawing.Size(89, 16)
         Me.Label24.TabIndex = 15
         Me.Label24.Text = "Jewelry Type"
         '
@@ -1742,7 +1668,7 @@ Partial Class Form1
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.Location = New System.Drawing.Point(441, 158)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(76, 16)
+        Me.Label25.Size = New System.Drawing.Size(77, 16)
         Me.Label25.TabIndex = 10
         Me.Label25.Text = "Expiry Date"
         '
@@ -1752,7 +1678,7 @@ Partial Class Form1
         Me.Label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label26.Location = New System.Drawing.Point(441, 109)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(85, 16)
+        Me.Label26.Size = New System.Drawing.Size(86, 16)
         Me.Label26.TabIndex = 9
         Me.Label26.Text = "Maturity Date"
         '
@@ -1762,7 +1688,7 @@ Partial Class Form1
         Me.Label27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label27.Location = New System.Drawing.Point(442, 57)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(69, 16)
+        Me.Label27.Size = New System.Drawing.Size(70, 16)
         Me.Label27.TabIndex = 8
         Me.Label27.Text = "Loan Date"
         '
@@ -1790,7 +1716,7 @@ Partial Class Form1
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.Location = New System.Drawing.Point(68, 168)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(72, 16)
+        Me.Label28.Size = New System.Drawing.Size(73, 16)
         Me.Label28.TabIndex = 1
         Me.Label28.Text = "Last Name"
         '
@@ -1800,14 +1726,14 @@ Partial Class Form1
         Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.Location = New System.Drawing.Point(68, 105)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(72, 16)
+        Me.Label29.Size = New System.Drawing.Size(73, 16)
         Me.Label29.TabIndex = 0
         Me.Label29.Text = "First Name"
         '
         'Panel5
         '
         Me.Panel5.Controls.Add(Me.TextBox2)
-        Me.Panel5.Controls.Add(Me.Button7)
+        Me.Panel5.Controls.Add(Me.AddCust)
         Me.Panel5.Controls.Add(Me.DataGridView4)
         Me.Panel5.Location = New System.Drawing.Point(193, 22)
         Me.Panel5.Name = "Panel5"
@@ -1817,44 +1743,112 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(540, 28)
+        Me.TextBox2.Location = New System.Drawing.Point(540, 78)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(175, 20)
         Me.TextBox2.TabIndex = 1
         '
-        'Button7
+        'AddCust
         '
-        Me.Button7.BackColor = System.Drawing.Color.Maroon
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.ForeColor = System.Drawing.SystemColors.Control
-        Me.Button7.Location = New System.Drawing.Point(722, 21)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(100, 33)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "New"
-        Me.Button7.UseVisualStyleBackColor = False
+        Me.AddCust.BackColor = System.Drawing.Color.Maroon
+        Me.AddCust.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddCust.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AddCust.ForeColor = System.Drawing.SystemColors.Control
+        Me.AddCust.Location = New System.Drawing.Point(726, 65)
+        Me.AddCust.Name = "AddCust"
+        Me.AddCust.Size = New System.Drawing.Size(100, 33)
+        Me.AddCust.TabIndex = 2
+        Me.AddCust.Text = "New"
+        Me.AddCust.UseVisualStyleBackColor = False
         '
         'DataGridView4
         '
         Me.DataGridView4.AllowUserToAddRows = False
         Me.DataGridView4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridView4.ColumnHeadersHeight = 30
         Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4})
+        Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.Edit, Me.Column5})
         Me.DataGridView4.EnableHeadersVisualStyles = False
-        Me.DataGridView4.Location = New System.Drawing.Point(6, 59)
+        Me.DataGridView4.Location = New System.Drawing.Point(6, 110)
         Me.DataGridView4.Name = "DataGridView4"
-        Me.DataGridView4.Size = New System.Drawing.Size(816, 385)
+        Me.DataGridView4.Size = New System.Drawing.Size(816, 421)
         Me.DataGridView4.TabIndex = 0
+        '
+        'pdate_column
+        '
+        Me.pdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.pdate_column.HeaderText = "Pawn Date"
+        Me.pdate_column.Name = "pdate_column"
+        '
+        'mdate_column
+        '
+        Me.mdate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.mdate_column.HeaderText = "Maturity Date"
+        Me.mdate_column.Name = "mdate_column"
+        '
+        'edate_column
+        '
+        Me.edate_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.edate_column.HeaderText = "Expiry Date"
+        Me.edate_column.Name = "edate_column"
+        '
+        'loan_column
+        '
+        Me.loan_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.loan_column.HeaderText = "Loan Amount"
+        Me.loan_column.Name = "loan_column"
+        '
+        'balance_column
+        '
+        Me.balance_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.balance_column.HeaderText = "Balance"
+        Me.balance_column.Name = "balance_column"
+        '
+        'lname_column
+        '
+        Me.lname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.lname_column.HeaderText = "Last Name"
+        Me.lname_column.Name = "lname_column"
+        '
+        'fname_column
+        '
+        Me.fname_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.fname_column.HeaderText = "First Name"
+        Me.fname_column.Name = "fname_column"
+        '
+        'item_column
+        '
+        Me.item_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.item_column.HeaderText = "Item"
+        Me.item_column.Name = "item_column"
+        '
+        'Itype_column
+        '
+        Me.Itype_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Itype_column.HeaderText = "Item Type"
+        Me.Itype_column.Name = "Itype_column"
+        '
+        'renew_column
+        '
+        Me.renew_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.renew_column.HeaderText = ""
+        Me.renew_column.Name = "renew_column"
+        Me.renew_column.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.renew_column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'auction
+        '
+        Me.auction.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.auction.HeaderText = ""
+        Me.auction.Name = "auction"
         '
         'DataGridViewTextBoxColumn1
         '
@@ -1880,15 +1874,25 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn4.HeaderText = "Address"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
+        'Edit
+        '
+        Me.Edit.HeaderText = ""
+        Me.Edit.Name = "Edit"
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = ""
+        Me.Column5.Name = "Column5"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1028, 585)
         Me.Controls.Add(Me.PanelTransactions)
-        Me.Controls.Add(Me.AddCustomerPnl)
         Me.Controls.Add(Me.panelUp)
         Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.AddCustomerPnl)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.panel_left)
         Me.Controls.Add(Me.Pawncards)
@@ -1970,7 +1974,6 @@ Partial Class Form1
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents AddCust As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents AddCustomerPnl As Panel
     Friend WithEvents addressTbox As TextBox
@@ -2038,16 +2041,6 @@ Partial Class Form1
     Friend WithEvents fnametbox2 As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents Label20 As Label
-    Friend WithEvents pdate_column As DataGridViewTextBoxColumn
-    Friend WithEvents mdate_column As DataGridViewTextBoxColumn
-    Friend WithEvents edate_column As DataGridViewTextBoxColumn
-    Friend WithEvents loan_column As DataGridViewTextBoxColumn
-    Friend WithEvents balance_column As DataGridViewTextBoxColumn
-    Friend WithEvents lname_column As DataGridViewTextBoxColumn
-    Friend WithEvents fname_column As DataGridViewTextBoxColumn
-    Friend WithEvents item_column As DataGridViewTextBoxColumn
-    Friend WithEvents Itype_column As DataGridViewTextBoxColumn
-    Friend WithEvents renew_column As DataGridViewButtonColumn
     Friend WithEvents Pay As Panel
     Friend WithEvents Label17 As Label
     Friend WithEvents itemtypesearchbox2 As ComboBox
@@ -2098,10 +2091,23 @@ Partial Class Form1
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel5 As Panel
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Button7 As Button
+    Friend WithEvents AddCust As Button
     Friend WithEvents DataGridView4 As DataGridView
+    Friend WithEvents pdate_column As DataGridViewTextBoxColumn
+    Friend WithEvents mdate_column As DataGridViewTextBoxColumn
+    Friend WithEvents edate_column As DataGridViewTextBoxColumn
+    Friend WithEvents loan_column As DataGridViewTextBoxColumn
+    Friend WithEvents balance_column As DataGridViewTextBoxColumn
+    Friend WithEvents lname_column As DataGridViewTextBoxColumn
+    Friend WithEvents fname_column As DataGridViewTextBoxColumn
+    Friend WithEvents item_column As DataGridViewTextBoxColumn
+    Friend WithEvents Itype_column As DataGridViewTextBoxColumn
+    Friend WithEvents renew_column As DataGridViewButtonColumn
+    Friend WithEvents auction As DataGridViewButtonColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents Edit As DataGridViewButtonColumn
+    Friend WithEvents Column5 As DataGridViewButtonColumn
 End Class

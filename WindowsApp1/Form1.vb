@@ -39,8 +39,9 @@ Public Class Form1
                 AddCustomerPnl.Visible = False
                 Panel6.Visible = False
                 PanelTransactions.Visible = False
-                renewal_panel.Visible -= False
+                renewal_panel.Visible = False
                 Pay.Visible = False
+                Pawncards.Visible = False
                 Panel5.Visible = True
 
             Case Else
@@ -77,7 +78,7 @@ Public Class Form1
         readQuery(customer_data)
         With cmdRead
             While .Read
-                DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+                DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
             End While
         End With
 
@@ -141,7 +142,7 @@ Public Class Form1
 
             With cmdRead
                 While .Read
-                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                    DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew", "Auction")
                 End While
             End With
 
@@ -194,8 +195,9 @@ Public Class Form1
 
     End Sub
 
-    Private Sub AddCust_Click(sender As Object, e As EventArgs) Handles AddCust.Click
-        Panel4.Visible = False
+    Private Sub AddCust_Click(sender As Object, e As EventArgs)
+
+        Panel5.Visible = False
         AddCustomerPnl.Visible = True
     End Sub
 
@@ -469,7 +471,7 @@ Public Class Form1
                 readQuery(pcardload)
                 With cmdRead
                     While .Read
-                        DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew")
+                        DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew", "Move to Auction")
                     End While
                 End With
 
@@ -752,5 +754,10 @@ Public Class Form1
     Private Sub PanelTransactions_MouseMove(sender As Object, e As MouseEventArgs) Handles PanelTransactions.MouseMove
         ReleaseCapture()
         SendMessage(Me.Handle, &H112&, &HF012&, 0)
+    End Sub
+
+    Private Sub AddCust_Click_1(sender As Object, e As EventArgs) Handles AddCust.Click
+        Panel5.Visible = False
+        AddCustomerPnl.Visible = True
     End Sub
 End Class
