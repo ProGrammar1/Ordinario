@@ -4,6 +4,8 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Public Class Form1
 
     Dim total_amntvar As Double
+    Dim custid As String
+
 
     <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
     Private Shared Sub ReleaseCapture()
@@ -132,15 +134,19 @@ Public Class Form1
 
         DataGridView4.Rows.Clear()
 
-        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
 
+        Try
+            readQuery(customer_data)
+            With cmdRead
+                While .Read
+                    DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
+                End While
+            End With
 
-        readQuery(customer_data)
-        With cmdRead
-            While .Read
-                DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
-            End While
-        End With
+        Catch ex As Exception
+
+        End Try
 
 
 
@@ -171,10 +177,25 @@ Public Class Form1
 
         panelOnButtonCst.Top = buttonItems.Top
         DataGridView5.Rows.Clear()
+        statuscbox.Items.Clear()
+        itemtypesrch.Items.Clear()
+        statuscbox.Items.Add("Active")
+        statuscbox.Items.Add("Redeemed")
+
+        statuscbox.Items.Add("Auctioned")
+
+        Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
 
         Dim itemquery As String = "select ItemName, ItemTypeName, Status from item, itemtypes where ItemType = ItemTypeID "
 
         Try
+
+            readQuery(itemtypeload)
+            With cmdRead
+                While .Read
+                    itemtypesrch.Items.Add(.GetValue(0))
+                End While
+            End With
             readQuery(itemquery)
             With cmdRead
                 While .Read
@@ -278,13 +299,13 @@ Public Class Form1
         Panel4.Visible = True
         DataGridView1.Rows.Clear()
 
-        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+        Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
 
 
         readQuery(customer_data)
         With cmdRead
             While .Read
-                DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+                DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Pawn")
             End While
         End With
 
@@ -303,56 +324,61 @@ Public Class Form1
         AddCustomerPnl.Visible = True
     End Sub
 
-    Private Sub DataGridView1_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.RowHeaderMouseClick
+    Private Sub dataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.ColumnIndex = DataGridView1.Columns("pawn_colbtn").Index AndAlso e.RowIndex >= 0 Then
+            Dim rowIndex As Integer = e.RowIndex
+
+            ' Access the data in the clicked row
+            Dim value1 As String = DataGridView1.Rows(rowIndex).Cells("Column1").Value.ToString()
+            Dim value2 As String = DataGridView1.Rows(rowIndex).Cells("Column2").Value.ToString()
+            Dim value3 As String = DataGridView1.Rows(rowIndex).Cells("Column3").Value.ToString()
+
+            Dim value4 As String = DataGridView1.Rows(rowIndex).Cells("Column4").Value.ToString()
+
+
+
+            ' Perform actions with the data, for example, display it in a MessageBox
+
+
+            Panel6.Visible = True
+            Panel6.Size = PanelTransactions.Size
+            Panel6.Location = PanelTransactions.Location
+            Panel6.Anchor = PanelTransactions.Anchor
+
+
+
+
+            AddCustomerPnl.Visible = False
+
+            Panel4.Visible = False
+
+            Nfnametbox.Text = value1
+            Nlnametbox.Text = value2
+            Ncontacttbox.Text = value3
+            Naddresstbox.Text = value4
+
+
+            Dim itemtypes As String = "Select ItemTypeName from itemtypes"
+
+            Try
+                readQuery(itemtypes)
+                With cmdRead
+                    While .Read
+                        jtypebox.Items.Add(.GetValue(0))
+                    End While
+                End With
+            Catch ex As Exception
+
+            End Try
+            DateTimematurity.Value = DateTime.Now.AddMonths(1)
+            DateTimeexpiry.Value = DateTime.Now.AddMonths(4)
+
+            interestRate.Text = "0.03"
+
+
+        End If
+
         ' Get the index of the clicked row
-        Dim rowIndex As Integer = e.RowIndex
-
-        ' Access the data in the clicked row
-        Dim value1 As String = DataGridView1.Rows(rowIndex).Cells("Column1").Value.ToString()
-        Dim value2 As String = DataGridView1.Rows(rowIndex).Cells("Column2").Value.ToString()
-        Dim value3 As String = DataGridView1.Rows(rowIndex).Cells("Column3").Value.ToString()
-
-        Dim value4 As String = DataGridView1.Rows(rowIndex).Cells("Column4").Value.ToString()
-
-
-
-        ' Perform actions with the data, for example, display it in a MessageBox
-
-
-        Panel6.Visible = True
-        Panel6.Size = PanelTransactions.Size
-        Panel6.Location = PanelTransactions.Location
-        Panel6.Anchor = PanelTransactions.Anchor
-
-
-
-
-        AddCustomerPnl.Visible = False
-
-        Panel4.Visible = False
-
-        Nfnametbox.Text = value1
-        Nlnametbox.Text = value2
-        Ncontacttbox.Text = value3
-        Naddresstbox.Text = value4
-
-
-        Dim itemtypes As String = "Select ItemTypeName from itemtypes"
-
-        Try
-            readQuery(itemtypes)
-            With cmdRead
-                While .Read
-                    jtypebox.Items.Add(.GetValue(0))
-                End While
-            End With
-        Catch ex As Exception
-
-        End Try
-        DateTimematurity.Value = DateTime.Now.AddMonths(1)
-        DateTimeexpiry.Value = DateTime.Now.AddMonths(4)
-
-        interestRate.Text = "0.03"
 
 
     End Sub
@@ -370,13 +396,13 @@ Public Class Form1
             AddCustomerPnl.Visible = False
             DataGridView1.Rows.Clear()
 
-            Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers"
+            Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
 
 
             readQuery(customer_data)
             With cmdRead
                 While .Read
-                    DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3))
+                    DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Pawn")
                 End While
             End With
             Panel4.Visible = True
@@ -475,43 +501,46 @@ Public Class Form1
     End Sub
 
     Private Sub dataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+        If e.ColumnIndex = DataGridView2.Columns("renew").Index AndAlso e.RowIndex >= 0 Then
+            Dim rowIndex As Integer = e.RowIndex
+
+            ' Access the data in the clicked row
+            Dim pawndate As DateTime = DataGridView2.Rows(rowIndex).Cells("pdate_column").Value
+            Dim maturity As DateTime = DataGridView2.Rows(rowIndex).Cells("mdate_column").Value
+            Dim expiry As DateTime = DataGridView2.Rows(rowIndex).Cells("edate_column").Value
+
+
+            Dim curbalance As String = DataGridView2.Rows(rowIndex).Cells("balance_column").Value.ToString()
+            Dim lname As String = DataGridView2.Rows(rowIndex).Cells("lname_column").Value.ToString()
+
+            Dim fname As String = DataGridView2.Rows(rowIndex).Cells("fname_column").Value.ToString()
+            Dim itemname As String = DataGridView2.Rows(rowIndex).Cells("item_column").Value.ToString()
+            Dim itemtype As String = DataGridView2.Rows(rowIndex).Cells("Itype_column").Value.ToString()
+
+            Dim balance_num As Double = Double.Parse(curbalance)
+            Dim total As Double = balance_num + 50.0
+
+
+            Pawncards.Visible = False
+
+            renewal_panel.Visible = True
+
+
+            fnametbox2.Text = fname
+            lnametbox2.Text = lname
+            loandateupdt.Value = pawndate
+            maturityupdt.Value = maturity
+            Expiryupdt.Value = expiry.AddMonths(1)
+
+            jtypebox2.Text = itemtype
+            Jname2.Text = itemname
+            balance.Text = curbalance
+            renewal.Text = "50.00"
+
+            totaltbox2.Text = total.ToString
+        End If
         ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
-        Dim rowIndex As Integer = e.RowIndex
 
-        ' Access the data in the clicked row
-        Dim pawndate As DateTime = DataGridView2.Rows(rowIndex).Cells("pdate_column").Value
-        Dim maturity As DateTime = DataGridView2.Rows(rowIndex).Cells("mdate_column").Value
-        Dim expiry As DateTime = DataGridView2.Rows(rowIndex).Cells("edate_column").Value
-
-
-        Dim curbalance As String = DataGridView2.Rows(rowIndex).Cells("balance_column").Value.ToString()
-        Dim lname As String = DataGridView2.Rows(rowIndex).Cells("lname_column").Value.ToString()
-
-        Dim fname As String = DataGridView2.Rows(rowIndex).Cells("fname_column").Value.ToString()
-        Dim itemname As String = DataGridView2.Rows(rowIndex).Cells("item_column").Value.ToString()
-        Dim itemtype As String = DataGridView2.Rows(rowIndex).Cells("Itype_column").Value.ToString()
-
-        Dim balance_num As Double = Double.Parse(curbalance)
-        Dim total As Double = balance_num + 50.0
-
-
-        Pawncards.Visible = False
-
-        renewal_panel.Visible = True
-
-
-        fnametbox2.Text = fname
-        lnametbox2.Text = lname
-        loandateupdt.Value = pawndate
-        maturityupdt.Value = maturity
-        Expiryupdt.Value = expiry.AddMonths(1)
-
-        jtypebox2.Text = itemtype
-        Jname2.Text = itemname
-        balance.Text = curbalance
-        renewal.Text = "50.00"
-
-        totaltbox2.Text = total.ToString
     End Sub
 
     Private Sub principal_amnt_TextChanged(sender As Object, e As EventArgs) Handles principal_amnt.TextChanged
@@ -643,42 +672,45 @@ Public Class Form1
 
 
     Private Sub dataGridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView3.CellContentClick
-        ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
-        Dim rowIndex As Integer = e.RowIndex
+        If e.ColumnIndex = DataGridView3.Columns("pay_column").Index AndAlso e.RowIndex >= 0 Then
+            Dim rowIndex As Integer = e.RowIndex
 
-        ' Access the data in the clicked row
-        Dim pawndate As DateTime = DataGridView3.Rows(rowIndex).Cells("pawndate2").Value
-        Dim maturity As DateTime = DataGridView3.Rows(rowIndex).Cells("mdate2").Value
-        Dim expiry As DateTime = DataGridView3.Rows(rowIndex).Cells("edate2").Value
-
-
-        Dim curbalance As String = DataGridView3.Rows(rowIndex).Cells("balance2").Value.ToString()
-        Dim lname As String = DataGridView3.Rows(rowIndex).Cells("lname2").Value.ToString()
-
-        Dim fname As String = DataGridView3.Rows(rowIndex).Cells("fname2").Value.ToString()
-        Dim itemname As String = DataGridView3.Rows(rowIndex).Cells("item2").Value.ToString()
-        Dim itemtype As String = DataGridView3.Rows(rowIndex).Cells("itemtype2").Value.ToString()
-
-        'Dim balance_num As Double = Double.Parse(curbalance)
-        'Dim total As Double = balance_num + 50.0
+            ' Access the data in the clicked row
+            Dim pawndate As DateTime = DataGridView3.Rows(rowIndex).Cells("pawndate2").Value
+            Dim maturity As DateTime = DataGridView3.Rows(rowIndex).Cells("mdate2").Value
+            Dim expiry As DateTime = DataGridView3.Rows(rowIndex).Cells("edate2").Value
 
 
-        Pay.Visible = False
+            Dim curbalance As String = DataGridView3.Rows(rowIndex).Cells("balance2").Value.ToString()
+            Dim lname As String = DataGridView3.Rows(rowIndex).Cells("lname2").Value.ToString()
 
-        paytransact.Visible = True
+            Dim fname As String = DataGridView3.Rows(rowIndex).Cells("fname2").Value.ToString()
+            Dim itemname As String = DataGridView3.Rows(rowIndex).Cells("item2").Value.ToString()
+            Dim itemtype As String = DataGridView3.Rows(rowIndex).Cells("itemtype2").Value.ToString()
 
-
-        fname3.Text = fname
-        lname3.Text = lname
-        ldate3.Value = pawndate
-        mdate3.Value = maturity
-        edate3.Value = expiry
-
+            'Dim balance_num As Double = Double.Parse(curbalance)
+            'Dim total As Double = balance_num + 50.0
 
 
-        jtypebox3.Text = itemtype
-        jname3.Text = itemname
-        bduetbox.Text = curbalance
+            Pay.Visible = False
+
+            paytransact.Visible = True
+
+
+            fname3.Text = fname
+            lname3.Text = lname
+            ldate3.Value = pawndate
+            mdate3.Value = maturity
+            edate3.Value = expiry
+
+
+
+            jtypebox3.Text = itemtype
+            jname3.Text = itemname
+            bduetbox.Text = curbalance
+
+
+        End If
 
 
 
@@ -861,5 +893,246 @@ Public Class Form1
     Private Sub AddCust_Click_1(sender As Object, e As EventArgs) Handles AddCust.Click
         CustPanel.Visible = False
         AddCustomerPnl.Visible = True
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles savebtn.Click
+
+        If Not String.IsNullOrEmpty(updtfname.Text) Or Not String.IsNullOrEmpty(updtlname.Text) Or Not String.IsNullOrEmpty(updtaddress.Text) Or Not String.IsNullOrEmpty(updtcontact.Text) Then
+            Dim custupdate As String = "Update customers set CustFname = '" & updtfname.Text & "',CustLname = '" & updtlname.Text & "',CustContact = '" & updtcontact.Text & "',CustAddress = '" & updtaddress.Text & "' where CustID = '" & custid & "'"
+            Try
+                readQuery(custupdate)
+                MsgBox("Updated Successfully", MsgBoxStyle.Information)
+                savebtn.Enabled = False
+                updtfname.Clear()
+                updtlname.Clear()
+
+                updtcontact.Clear()
+
+                updtaddress.Clear()
+
+
+            Catch ex As Exception
+
+            End Try
+        Else
+            MsgBox("Please fill up all forms", MsgBoxStyle.Critical)
+
+
+
+
+        End If
+
+    End Sub
+
+
+    Private Sub CustomerIdquery(fname As String, lname As String)
+
+        Dim custidquery As String = "select CustID from customers where CustFname = '" & fname & "' and CustLname = '" & lname & "' "
+
+
+        Try
+            readQuery(custidquery)
+            With cmdRead
+                While .Read
+                    custid = .GetValue(0)
+                End While
+            End With
+
+
+        Catch ex As Exception
+
+        End Try
+        savebtn.Enabled = True
+    End Sub
+
+
+    Private Sub dataGridView4_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView4.CellContentClick
+        Dim rowIndex As Integer
+        If e.ColumnIndex = DataGridView4.Columns("Edit").Index AndAlso e.RowIndex >= 0 Then
+
+            rowIndex = e.RowIndex
+
+            Dim fname As String = DataGridView4.Rows(rowIndex).Cells("custfname").Value.ToString()
+            Dim lname As String = DataGridView4.Rows(rowIndex).Cells("custlname").Value.ToString()
+
+            Dim contact As String = DataGridView4.Rows(rowIndex).Cells("custcontact").Value.ToString()
+            Dim address As String = DataGridView4.Rows(rowIndex).Cells("custaddress").Value.ToString()
+
+
+            updtfname.Text = fname
+            updtlname.Text = lname
+            updtcontact.Text = contact
+            updtaddress.Text = address
+
+
+            CustomerIdquery(fname, lname)
+        ElseIf e.ColumnIndex = DataGridView4.Columns("Delete").Index AndAlso e.RowIndex >= 0 Then
+            rowIndex = e.RowIndex
+
+            Dim fname As String = DataGridView4.Rows(rowIndex).Cells("custfname").Value.ToString()
+            Dim lname As String = DataGridView4.Rows(rowIndex).Cells("custlname").Value.ToString()
+            CustomerIdquery(fname, lname)
+            Dim custupdate As String = "Update customers set CustStatus = 'Deleted' where CustID = '" & custid & "'"
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete record?", "Confirmation", MessageBoxButtons.YesNo)
+
+            If result = DialogResult.Yes Then
+                Try
+                    readQuery(custupdate)
+                    MsgBox("Record Deleted", MsgBoxStyle.Information)
+
+                    DataGridView4.Rows.Clear()
+
+                    Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
+
+
+                    readQuery(customer_data)
+                    With cmdRead
+                        While .Read
+                            DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
+                        End While
+                    End With
+
+
+
+                Catch ex As Exception
+
+                End Try
+
+            Else
+
+
+            End If
+
+
+
+
+
+
+
+        End If
+
+
+
+        'Dim balance_num As Double = Double.Parse(curbalance)
+        'Dim total As Double = balance_num + 50.0
+
+
+
+
+
+
+
+    End Sub
+    Private Sub customersearch(ByVal dgv As DataGridView, lnamesearch As String, fnamesearch As String, method As String)
+        Dim customerquery As String = "SELECT CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active' "
+        If Not String.IsNullOrEmpty(lnamesearch) Then
+            customerquery &= "AND CustLname LIKE '%" & lnamesearch & "%'"
+        End If
+
+        If Not String.IsNullOrEmpty(fnamesearch) Then
+            customerquery &= "AND CustFname LIKE '%" & fnamesearch & "%'"
+        End If
+
+        dgv.Rows.Clear()
+
+        If method = "" Then
+            Try
+                readQuery(customerquery)
+                With cmdRead
+                    While .Read
+
+
+                        dgv.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
+
+                    End While
+                End With
+            Catch ex As Exception
+
+            End Try
+
+        Else
+            Try
+                readQuery(customerquery)
+                With cmdRead
+                    While .Read
+
+
+                        dgv.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), method)
+
+                    End While
+                End With
+            Catch ex As Exception
+
+            End Try
+
+        End If
+
+
+
+
+    End Sub
+
+    Private Sub itemsearch()
+
+        Dim itemquery As String = "select ItemName, ItemTypeName, Status from item, itemtypes where ItemType = ItemTypeID "
+        If Not String.IsNullOrEmpty(c.Text) Then
+            itemquery &= "and ItemName LIKE '%" & c.Text & "%'"
+        End If
+
+
+        If itemtypesrch.SelectedIndex <> -1 Then
+            itemquery &= "and ItemTypeName = '" & itemtypesrch.Text & "'"
+        End If
+
+        If statuscbox.SelectedIndex <> -1 Then
+            itemquery &= "and Status = '" & statuscbox.Text & "'"
+        End If
+        DataGridView5.Rows.Clear()
+
+        Try
+            readQuery(itemquery)
+            With cmdRead
+                While .Read
+                    DataGridView5.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2))
+
+                End While
+            End With
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles fnamesearch.TextChanged
+        customersearch(DataGridView4, lnamesearch.Text, fnamesearch.Text, "")
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles lnamesearch.TextChanged
+        customersearch(DataGridView4, lnamesearch.Text, fnamesearch.Text, "")
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles fnameSTbox.TextChanged
+        customersearch(DataGridView1, lnameSTbox.Text, fnameSTbox.Text, "Pawn")
+
+    End Sub
+
+    Private Sub lnameSTbox_TextChanged(sender As Object, e As EventArgs) Handles lnameSTbox.TextChanged
+        customersearch(DataGridView1, lnameSTbox.Text, fnameSTbox.Text, "Pawn")
+    End Sub
+
+    Private Sub c_TextChanged(sender As Object, e As EventArgs) Handles c.TextChanged
+        itemsearch()
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles itemtypesrch.SelectedIndexChanged
+        itemsearch()
+
+    End Sub
+
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles statuscbox.SelectedIndexChanged
+        itemsearch()
     End Sub
 End Class
