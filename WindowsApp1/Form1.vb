@@ -42,7 +42,64 @@ Public Class Form1
                 renewal_panel.Visible = False
                 Pay.Visible = False
                 Pawncards.Visible = False
-                Panel5.Visible = True
+                paytransact.Visible = False
+
+                CustPanel.Visible = True
+
+            Case "Payments"
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible = False
+                Pay.Visible = False
+                Pawncards.Visible = False
+                paytransact.Visible = False
+
+                CustPanel.Visible = False
+                ItemsPanel.Visible = False
+                AuctionItems.Visible = False
+                payemnts.Visible = True
+
+            Case "Auction"
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible = False
+                Pay.Visible = False
+                Pawncards.Visible = False
+                paytransact.Visible = False
+
+                CustPanel.Visible = False
+                ItemsPanel.Visible = False
+                AuctionItems.Visible = True
+                payemnts.Visible = False
+
+
+            Case "Items"
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible = False
+                Pay.Visible = False
+                Pawncards.Visible = False
+                paytransact.Visible = False
+
+                CustPanel.Visible = False
+                ItemsPanel.Visible = True
+                AuctionItems.Visible = False
+                payemnts.Visible = False
+
+
+
+
+
+
+
+
+
 
             Case Else
                 ' Handle other buttons or cases if needed
@@ -53,13 +110,16 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set the default value of DateTimePicker to be four months in advance
-        Panel4.Visible = false
+        Panel4.Visible = False
         AddCustomerPnl.Visible = False
         Panel6.Visible = False
         Pawncards.Visible = False
         renewal_panel.Visible = False
         Pay.Visible = False
         paytransact.Visible = False
+        ItemsPanel.Visible = False
+        AuctionItems.Visible = False
+        payemnts.Visible = False
         PanelTransactions.Visible = True
 
 
@@ -105,10 +165,27 @@ Public Class Form1
     End Sub
 
     Private Sub buttonItems_Click(sender As Object, e As EventArgs) Handles buttonItems.Click
+        HandleButtonClick("Items")
 
         panelOnButtonCst.Height = buttonItems.Height
 
         panelOnButtonCst.Top = buttonItems.Top
+        DataGridView5.Rows.Clear()
+
+        Dim itemquery As String = "select ItemName, ItemTypeName, Status from item, itemtypes where ItemType = ItemTypeID "
+
+        Try
+            readQuery(itemquery)
+            With cmdRead
+                While .Read
+                    DataGridView5.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2))
+
+                End While
+            End With
+
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
@@ -155,13 +232,38 @@ Public Class Form1
     End Sub
 
     Private Sub btnTransactRec_Click(sender As Object, e As EventArgs) Handles btnTransactRec.Click
+        HandleButtonClick("Payments")
+
         panelOnButtonCst.Height = btnTransactRec.Height
         panelOnButtonCst.Top = btnTransactRec.Top
+        DataGridView6.Rows.Clear()
+
+        Dim records As String = "SELECT customers.CustFname,customers.CustLname, item.ItemName, itemtypes.ItemTypeName, transactions.T_amount,transactions.T_Date from customers,item,itemtypes,transactions where Cno=customers.CustID and Itemno = ItemID 
+            and ItemType = ItemTypeID "
+
+        Try
+            readQuery(records)
+            With cmdRead
+                While .Read
+                    DataGridView6.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5))
+
+                End While
+            End With
+
+        Catch ex As Exception
+
+        End Try
+
+
+
+
     End Sub
 
     Private Sub btnAuctions_Click(sender As Object, e As EventArgs) Handles btnAuctions.Click
         panelOnButtonCst.Height = btnAuctions.Height
         panelOnButtonCst.Top = btnAuctions.Top
+        HandleButtonClick("Auction")
+
     End Sub
 
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
@@ -197,7 +299,7 @@ Public Class Form1
 
     Private Sub AddCust_Click(sender As Object, e As EventArgs)
 
-        Panel5.Visible = False
+        CustPanel.Visible = False
         AddCustomerPnl.Visible = True
     End Sub
 
@@ -757,7 +859,7 @@ Public Class Form1
     End Sub
 
     Private Sub AddCust_Click_1(sender As Object, e As EventArgs) Handles AddCust.Click
-        Panel5.Visible = False
+        CustPanel.Visible = False
         AddCustomerPnl.Visible = True
     End Sub
 End Class
