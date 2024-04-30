@@ -1377,4 +1377,39 @@ Public Class Form1
         AuctionItems.Enabled = True
         panel_left.Enabled = True
     End Sub
+
+    Private Sub AitemName_TextChanged(sender As Object, e As EventArgs) Handles AitemName.TextChanged
+        auction_search()
+    End Sub
+
+    Private Sub AitemType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AitemType.SelectedIndexChanged
+        auction_search()
+    End Sub
+
+    Private Sub auction_search()
+        DataGridView7.Rows.Clear()
+        Dim aucItems As String = "Select ItemName, ItemTypeName,startingbid,currentbid,enddate from item,itemtypes,auction where item.ItemID = auction.ItemID and item.ItemType = ItemTypeID "
+        If Not String.IsNullOrEmpty(AitemName.Text) Then
+            aucItems &= "and ItemName LIKE '%" & AitemName.Text & "%'"
+        End If
+
+
+        If AitemType.SelectedIndex <> -1 Then
+            aucItems &= "and ItemTypeName = '" & AitemType.Text & "'"
+        End If
+
+
+        Try
+            readQuery(aucItems)
+            With cmdRead
+                While .Read
+                    DataGridView7.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), "Bid")
+                End While
+            End With
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
 End Class
