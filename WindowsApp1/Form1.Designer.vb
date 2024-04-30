@@ -24,13 +24,13 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panel_left = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -46,6 +46,12 @@ Partial Class Form1
         Me.panelUp = New System.Windows.Forms.Panel()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.lnameSTbox = New System.Windows.Forms.TextBox()
         Me.fnameSTbox = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -92,6 +98,8 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PanelTransactions = New System.Windows.Forms.Panel()
         Me.AddCustomerPnl = New System.Windows.Forms.Panel()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.addcustbtn = New System.Windows.Forms.Button()
         Me.addressTbox = New System.Windows.Forms.TextBox()
         Me.contactTbox = New System.Windows.Forms.TextBox()
@@ -250,18 +258,22 @@ Partial Class Form1
         Me.AuctItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AuctionItemType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StartBid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.curbid_column = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Enddate = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.bid = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Panel10 = New System.Windows.Forms.Panel()
-        Me.lnameSTbox = New System.Windows.Forms.TextBox()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.BID_PANEL = New System.Windows.Forms.Panel()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.bidconfirm = New System.Windows.Forms.Button()
+        Me.bidtbox = New System.Windows.Forms.TextBox()
+        Me.Label50 = New System.Windows.Forms.Label()
         Me.panel_left.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel10.SuspendLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -269,6 +281,8 @@ Partial Class Form1
         Me.PanelPay.SuspendLayout()
         Me.PanelTransactions.SuspendLayout()
         Me.AddCustomerPnl.SuspendLayout()
+        Me.Panel11.SuspendLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Pawncards.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.renewal_panel.SuspendLayout()
@@ -289,9 +303,9 @@ Partial Class Form1
         CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.AuctionItems.SuspendLayout()
         CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel10.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BID_PANEL.SuspendLayout()
+        Me.Panel13.SuspendLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panel_left
@@ -480,6 +494,67 @@ Partial Class Form1
         Me.Panel4.TabIndex = 5
         Me.Panel4.Visible = False
         '
+        'Panel10
+        '
+        Me.Panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel10.Controls.Add(Me.PictureBox4)
+        Me.Panel10.Controls.Add(Me.PictureBox3)
+        Me.Panel10.Controls.Add(Me.Label46)
+        Me.Panel10.Controls.Add(Me.Label45)
+        Me.Panel10.Controls.Add(Me.lnameSTbox)
+        Me.Panel10.Controls.Add(Me.fnameSTbox)
+        Me.Panel10.Location = New System.Drawing.Point(7, 20)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(429, 67)
+        Me.Panel10.TabIndex = 2
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
+        Me.PictureBox4.Location = New System.Drawing.Point(375, 41)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(15, 15)
+        Me.PictureBox4.TabIndex = 13
+        Me.PictureBox4.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.BackColor = System.Drawing.SystemColors.ControlLightLight
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(375, 12)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(15, 15)
+        Me.PictureBox3.TabIndex = 12
+        Me.PictureBox3.TabStop = False
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label46.Location = New System.Drawing.Point(61, 36)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(86, 20)
+        Me.Label46.TabIndex = 4
+        Me.Label46.Text = "Last Name"
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Location = New System.Drawing.Point(61, 9)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(86, 20)
+        Me.Label45.TabIndex = 3
+        Me.Label45.Text = "First Name"
+        '
+        'lnameSTbox
+        '
+        Me.lnameSTbox.Location = New System.Drawing.Point(188, 40)
+        Me.lnameSTbox.Name = "lnameSTbox"
+        Me.lnameSTbox.Size = New System.Drawing.Size(211, 20)
+        Me.lnameSTbox.TabIndex = 2
+        '
         'fnameSTbox
         '
         Me.fnameSTbox.Location = New System.Drawing.Point(188, 10)
@@ -491,14 +566,14 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.pawn_colbtn})
@@ -944,6 +1019,8 @@ Partial Class Form1
         '
         'AddCustomerPnl
         '
+        Me.AddCustomerPnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.AddCustomerPnl.Controls.Add(Me.Panel11)
         Me.AddCustomerPnl.Controls.Add(Me.addcustbtn)
         Me.AddCustomerPnl.Controls.Add(Me.addressTbox)
         Me.AddCustomerPnl.Controls.Add(Me.contactTbox)
@@ -953,11 +1030,30 @@ Partial Class Form1
         Me.AddCustomerPnl.Controls.Add(Me.contactLabel)
         Me.AddCustomerPnl.Controls.Add(Me.lnameLabel)
         Me.AddCustomerPnl.Controls.Add(Me.fnameLabel)
-        Me.AddCustomerPnl.Location = New System.Drawing.Point(193, 22)
+        Me.AddCustomerPnl.Location = New System.Drawing.Point(350, 200)
         Me.AddCustomerPnl.Name = "AddCustomerPnl"
-        Me.AddCustomerPnl.Size = New System.Drawing.Size(829, 557)
+        Me.AddCustomerPnl.Size = New System.Drawing.Size(504, 264)
         Me.AddCustomerPnl.TabIndex = 5
         Me.AddCustomerPnl.Visible = False
+        '
+        'Panel11
+        '
+        Me.Panel11.BackColor = System.Drawing.Color.Gold
+        Me.Panel11.Controls.Add(Me.PictureBox5)
+        Me.Panel11.Location = New System.Drawing.Point(0, 1)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(504, 34)
+        Me.Panel11.TabIndex = 9
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
+        Me.PictureBox5.Location = New System.Drawing.Point(469, 1)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox5.TabIndex = 10
+        Me.PictureBox5.TabStop = False
         '
         'addcustbtn
         '
@@ -965,7 +1061,7 @@ Partial Class Form1
         Me.addcustbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.addcustbtn.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.addcustbtn.ForeColor = System.Drawing.SystemColors.Control
-        Me.addcustbtn.Location = New System.Drawing.Point(325, 341)
+        Me.addcustbtn.Location = New System.Drawing.Point(199, 204)
         Me.addcustbtn.Name = "addcustbtn"
         Me.addcustbtn.Size = New System.Drawing.Size(94, 41)
         Me.addcustbtn.TabIndex = 8
@@ -974,73 +1070,73 @@ Partial Class Form1
         '
         'addressTbox
         '
-        Me.addressTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.addressTbox.Location = New System.Drawing.Point(307, 258)
+        Me.addressTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addressTbox.Location = New System.Drawing.Point(331, 144)
         Me.addressTbox.Name = "addressTbox"
-        Me.addressTbox.Size = New System.Drawing.Size(245, 29)
+        Me.addressTbox.Size = New System.Drawing.Size(161, 22)
         Me.addressTbox.TabIndex = 7
         '
         'contactTbox
         '
-        Me.contactTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.contactTbox.Location = New System.Drawing.Point(307, 192)
+        Me.contactTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.contactTbox.Location = New System.Drawing.Point(330, 105)
         Me.contactTbox.Name = "contactTbox"
-        Me.contactTbox.Size = New System.Drawing.Size(245, 29)
+        Me.contactTbox.Size = New System.Drawing.Size(158, 22)
         Me.contactTbox.TabIndex = 6
         '
         'lnameTbox
         '
-        Me.lnameTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lnameTbox.Location = New System.Drawing.Point(307, 127)
+        Me.lnameTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lnameTbox.Location = New System.Drawing.Point(89, 145)
         Me.lnameTbox.Name = "lnameTbox"
-        Me.lnameTbox.Size = New System.Drawing.Size(245, 29)
+        Me.lnameTbox.Size = New System.Drawing.Size(165, 22)
         Me.lnameTbox.TabIndex = 5
         '
         'fnameTbox
         '
-        Me.fnameTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fnameTbox.Location = New System.Drawing.Point(307, 64)
+        Me.fnameTbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fnameTbox.Location = New System.Drawing.Point(89, 105)
         Me.fnameTbox.Name = "fnameTbox"
-        Me.fnameTbox.Size = New System.Drawing.Size(245, 29)
+        Me.fnameTbox.Size = New System.Drawing.Size(162, 22)
         Me.fnameTbox.TabIndex = 4
         '
         'AddressLabel
         '
         Me.AddressLabel.AutoSize = True
-        Me.AddressLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AddressLabel.Location = New System.Drawing.Point(173, 260)
+        Me.AddressLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AddressLabel.Location = New System.Drawing.Point(273, 144)
         Me.AddressLabel.Name = "AddressLabel"
-        Me.AddressLabel.Size = New System.Drawing.Size(73, 26)
+        Me.AddressLabel.Size = New System.Drawing.Size(57, 21)
         Me.AddressLabel.TabIndex = 3
         Me.AddressLabel.Text = "Address"
         '
         'contactLabel
         '
         Me.contactLabel.AutoSize = True
-        Me.contactLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.contactLabel.Location = New System.Drawing.Point(176, 189)
+        Me.contactLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.contactLabel.Location = New System.Drawing.Point(273, 105)
         Me.contactLabel.Name = "contactLabel"
-        Me.contactLabel.Size = New System.Drawing.Size(74, 26)
+        Me.contactLabel.Size = New System.Drawing.Size(54, 21)
         Me.contactLabel.TabIndex = 2
         Me.contactLabel.Text = "Contact"
         '
         'lnameLabel
         '
         Me.lnameLabel.AutoSize = True
-        Me.lnameLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lnameLabel.Location = New System.Drawing.Point(173, 132)
+        Me.lnameLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lnameLabel.Location = New System.Drawing.Point(12, 146)
         Me.lnameLabel.Name = "lnameLabel"
-        Me.lnameLabel.Size = New System.Drawing.Size(95, 26)
+        Me.lnameLabel.Size = New System.Drawing.Size(71, 21)
         Me.lnameLabel.TabIndex = 1
         Me.lnameLabel.Text = "Last Name"
         '
         'fnameLabel
         '
         Me.fnameLabel.AutoSize = True
-        Me.fnameLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.fnameLabel.Location = New System.Drawing.Point(168, 66)
+        Me.fnameLabel.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.fnameLabel.Location = New System.Drawing.Point(11, 104)
         Me.fnameLabel.Name = "fnameLabel"
-        Me.fnameLabel.Size = New System.Drawing.Size(96, 26)
+        Me.fnameLabel.Size = New System.Drawing.Size(72, 21)
         Me.fnameLabel.TabIndex = 0
         Me.fnameLabel.Text = "First Name"
         '
@@ -1134,14 +1230,14 @@ Partial Class Form1
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView2.ColumnHeadersHeight = 30
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pdate_column, Me.mdate_column, Me.edate_column, Me.loan_column, Me.balance_column, Me.lname_column, Me.fname_column, Me.item_column, Me.Itype_column, Me.renew_column, Me.auction})
@@ -1568,14 +1664,14 @@ Partial Class Form1
         '
         Me.DataGridView3.AllowUserToAddRows = False
         Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView3.ColumnHeadersHeight = 30
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pawndate2, Me.mdate2, Me.edate2, Me.loan2, Me.balance2, Me.lname2, Me.fname2, Me.item2, Me.itemtype2, Me.pay_column})
@@ -2083,14 +2179,14 @@ Partial Class Form1
         '
         Me.DataGridView4.AllowUserToAddRows = False
         Me.DataGridView4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView4.ColumnHeadersHeight = 30
         Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.custfname, Me.custlname, Me.custcontact, Me.custaddress, Me.Edit, Me.Delete})
@@ -2206,14 +2302,14 @@ Partial Class Form1
         '
         Me.DataGridView5.AllowUserToAddRows = False
         Me.DataGridView5.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView5.ColumnHeadersHeight = 30
         Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.Itype, Me.item_status})
@@ -2332,14 +2428,14 @@ Partial Class Form1
         '
         Me.DataGridView6.AllowUserToAddRows = False
         Me.DataGridView6.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView6.ColumnHeadersHeight = 30
         Me.DataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataGridView6.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Tfname, Me.Tlname, Me.TItem, Me.TItype, Me.Tamount, Me.Tdate})
@@ -2435,17 +2531,17 @@ Partial Class Form1
         '
         Me.DataGridView7.AllowUserToAddRows = False
         Me.DataGridView7.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView7.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Franklin Gothic Medium", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView7.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView7.ColumnHeadersHeight = 30
         Me.DataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView7.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AuctItem, Me.AuctionItemType, Me.StartBid, Me.DataGridViewTextBoxColumn11, Me.Enddate, Me.bid})
+        Me.DataGridView7.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AuctItem, Me.AuctionItemType, Me.StartBid, Me.curbid_column, Me.Enddate, Me.bid})
         Me.DataGridView7.EnableHeadersVisualStyles = False
         Me.DataGridView7.Location = New System.Drawing.Point(6, 110)
         Me.DataGridView7.Name = "DataGridView7"
@@ -2470,11 +2566,11 @@ Partial Class Form1
         Me.StartBid.HeaderText = "StartingBid"
         Me.StartBid.Name = "StartBid"
         '
-        'DataGridViewTextBoxColumn11
+        'curbid_column
         '
-        Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn11.HeaderText = "CurrentBid"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.curbid_column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.curbid_column.HeaderText = "CurrentBid"
+        Me.curbid_column.Name = "curbid_column"
         '
         'Enddate
         '
@@ -2488,73 +2584,85 @@ Partial Class Form1
         Me.bid.HeaderText = "Bid"
         Me.bid.Name = "bid"
         '
-        'Panel10
+        'BID_PANEL
         '
-        Me.Panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel10.Controls.Add(Me.PictureBox4)
-        Me.Panel10.Controls.Add(Me.PictureBox3)
-        Me.Panel10.Controls.Add(Me.Label46)
-        Me.Panel10.Controls.Add(Me.Label45)
-        Me.Panel10.Controls.Add(Me.lnameSTbox)
-        Me.Panel10.Controls.Add(Me.fnameSTbox)
-        Me.Panel10.Location = New System.Drawing.Point(7, 20)
-        Me.Panel10.Name = "Panel10"
-        Me.Panel10.Size = New System.Drawing.Size(429, 67)
-        Me.Panel10.TabIndex = 2
+        Me.BID_PANEL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.BID_PANEL.Controls.Add(Me.Label47)
+        Me.BID_PANEL.Controls.Add(Me.Panel13)
+        Me.BID_PANEL.Controls.Add(Me.bidconfirm)
+        Me.BID_PANEL.Controls.Add(Me.bidtbox)
+        Me.BID_PANEL.Controls.Add(Me.Label50)
+        Me.BID_PANEL.Location = New System.Drawing.Point(350, 200)
+        Me.BID_PANEL.Name = "BID_PANEL"
+        Me.BID_PANEL.Size = New System.Drawing.Size(504, 264)
+        Me.BID_PANEL.TabIndex = 10
+        Me.BID_PANEL.Visible = False
         '
-        'lnameSTbox
+        'Label47
         '
-        Me.lnameSTbox.Location = New System.Drawing.Point(188, 40)
-        Me.lnameSTbox.Name = "lnameSTbox"
-        Me.lnameSTbox.Size = New System.Drawing.Size(211, 20)
-        Me.lnameSTbox.TabIndex = 2
+        Me.Label47.AutoSize = True
+        Me.Label47.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label47.Location = New System.Drawing.Point(177, 53)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(113, 37)
+        Me.Label47.TabIndex = 10
+        Me.Label47.Text = "Enter Bid"
         '
-        'Label45
+        'Panel13
         '
-        Me.Label45.AutoSize = True
-        Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label45.Location = New System.Drawing.Point(61, 9)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(86, 20)
-        Me.Label45.TabIndex = 3
-        Me.Label45.Text = "First Name"
+        Me.Panel13.BackColor = System.Drawing.Color.Gold
+        Me.Panel13.Controls.Add(Me.PictureBox6)
+        Me.Panel13.Location = New System.Drawing.Point(0, 1)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(504, 34)
+        Me.Panel13.TabIndex = 9
         '
-        'Label46
+        'PictureBox6
         '
-        Me.Label46.AutoSize = True
-        Me.Label46.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label46.Location = New System.Drawing.Point(61, 36)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(86, 20)
-        Me.Label46.TabIndex = 4
-        Me.Label46.Text = "Last Name"
+        Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
+        Me.PictureBox6.Location = New System.Drawing.Point(469, 1)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.PictureBox6.TabIndex = 10
+        Me.PictureBox6.TabStop = False
         '
-        'PictureBox3
+        'bidconfirm
         '
-        Me.PictureBox3.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(375, 12)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(15, 15)
-        Me.PictureBox3.TabIndex = 12
-        Me.PictureBox3.TabStop = False
+        Me.bidconfirm.BackColor = System.Drawing.Color.Maroon
+        Me.bidconfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.bidconfirm.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bidconfirm.ForeColor = System.Drawing.SystemColors.Control
+        Me.bidconfirm.Location = New System.Drawing.Point(184, 195)
+        Me.bidconfirm.Name = "bidconfirm"
+        Me.bidconfirm.Size = New System.Drawing.Size(94, 41)
+        Me.bidconfirm.TabIndex = 8
+        Me.bidconfirm.Text = "Confirm"
+        Me.bidconfirm.UseVisualStyleBackColor = False
         '
-        'PictureBox4
+        'bidtbox
         '
-        Me.PictureBox4.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(375, 41)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(15, 15)
-        Me.PictureBox4.TabIndex = 13
-        Me.PictureBox4.TabStop = False
+        Me.bidtbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bidtbox.Location = New System.Drawing.Point(197, 119)
+        Me.bidtbox.Name = "bidtbox"
+        Me.bidtbox.Size = New System.Drawing.Size(162, 29)
+        Me.bidtbox.TabIndex = 4
+        '
+        'Label50
+        '
+        Me.Label50.AutoSize = True
+        Me.Label50.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label50.Location = New System.Drawing.Point(95, 123)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(91, 24)
+        Me.Label50.TabIndex = 0
+        Me.Label50.Text = "Bid Amount"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1028, 585)
-        Me.Controls.Add(Me.ItemsPanel)
         Me.Controls.Add(Me.PanelTransactions)
         Me.Controls.Add(Me.panelUp)
         Me.Controls.Add(Me.Panel4)
@@ -2566,7 +2674,9 @@ Partial Class Form1
         Me.Controls.Add(Me.Pay)
         Me.Controls.Add(Me.paytransact)
         Me.Controls.Add(Me.CustPanel)
+        Me.Controls.Add(Me.ItemsPanel)
         Me.Controls.Add(Me.payemnts)
+        Me.Controls.Add(Me.BID_PANEL)
         Me.Controls.Add(Me.AuctionItems)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -2577,6 +2687,10 @@ Partial Class Form1
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        Me.Panel10.ResumeLayout(False)
+        Me.Panel10.PerformLayout()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
@@ -2590,6 +2704,9 @@ Partial Class Form1
         Me.PanelTransactions.PerformLayout()
         Me.AddCustomerPnl.ResumeLayout(False)
         Me.AddCustomerPnl.PerformLayout()
+        Me.Panel11.ResumeLayout(False)
+        Me.Panel11.PerformLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Pawncards.ResumeLayout(False)
         Me.Pawncards.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2621,10 +2738,11 @@ Partial Class Form1
         Me.AuctionItems.ResumeLayout(False)
         Me.AuctionItems.PerformLayout()
         CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel10.ResumeLayout(False)
-        Me.Panel10.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BID_PANEL.ResumeLayout(False)
+        Me.BID_PANEL.PerformLayout()
+        Me.Panel13.ResumeLayout(False)
+        Me.Panel13.PerformLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2821,7 +2939,7 @@ Partial Class Form1
     Friend WithEvents AuctItem As DataGridViewTextBoxColumn
     Friend WithEvents AuctionItemType As DataGridViewTextBoxColumn
     Friend WithEvents StartBid As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents curbid_column As DataGridViewTextBoxColumn
     Friend WithEvents Enddate As DataGridViewTextBoxColumn
     Friend WithEvents bid As DataGridViewButtonColumn
     Friend WithEvents updtcust_panel As Panel
@@ -2857,4 +2975,13 @@ Partial Class Form1
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label46 As Label
     Friend WithEvents Label45 As Label
+    Friend WithEvents Panel11 As Panel
+    Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents BID_PANEL As Panel
+    Friend WithEvents Label47 As Label
+    Friend WithEvents Panel13 As Panel
+    Friend WithEvents PictureBox6 As PictureBox
+    Friend WithEvents bidconfirm As Button
+    Friend WithEvents bidtbox As TextBox
+    Friend WithEvents Label50 As Label
 End Class

@@ -5,6 +5,12 @@ Public Class Form1
 
     Dim total_amntvar As Double
     Dim custid As String
+    Dim Item As String
+    Dim itemtype As String
+    Dim startbidprice As Double
+    Dim curbid As Double
+
+
 
 
     <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
@@ -17,13 +23,14 @@ Public Class Form1
         Select Case buttonName
             Case "Transactions"
                 ' Code to handle Button1 click
-                Panel4.Visible = True
+                Panel4.Visible = False
                 AddCustomerPnl.Visible = False
-                Panel6.Visible = True
+                Panel6.Visible = False
                 Pawncards.Visible = False
                 renewal_panel.Visible = False
                 Pay.Visible = False
                 paytransact.Visible = False
+                BID_PANEL.Visible = False
 
 
             Case "Pawncards"
@@ -34,9 +41,10 @@ Public Class Form1
                 PanelTransactions.Visible = False
                 renewal_panel.Visible -= True
                 Pay.Visible = False
+                BID_PANEL.Visible = False
+
 
             Case "Customers"
-                ' Code to handle Button3 click
                 Panel4.Visible = False
                 AddCustomerPnl.Visible = False
                 Panel6.Visible = False
@@ -45,8 +53,11 @@ Public Class Form1
                 Pay.Visible = False
                 Pawncards.Visible = False
                 paytransact.Visible = False
+                ItemsPanel.Visible = False
 
                 CustPanel.Visible = True
+                BID_PANEL.Visible = False
+
 
             Case "Payments"
                 Panel4.Visible = False
@@ -62,6 +73,8 @@ Public Class Form1
                 ItemsPanel.Visible = False
                 AuctionItems.Visible = False
                 payemnts.Visible = True
+                BID_PANEL.Visible = False
+
 
             Case "Auction"
                 Panel4.Visible = False
@@ -77,6 +90,8 @@ Public Class Form1
                 ItemsPanel.Visible = False
                 AuctionItems.Visible = True
                 payemnts.Visible = False
+                BID_PANEL.Visible = False
+
 
 
             Case "Items"
@@ -93,6 +108,8 @@ Public Class Form1
                 ItemsPanel.Visible = True
                 AuctionItems.Visible = False
                 payemnts.Visible = False
+                BID_PANEL.Visible = False
+
 
 
 
@@ -123,10 +140,35 @@ Public Class Form1
         AuctionItems.Visible = False
         payemnts.Visible = False
         PanelTransactions.Visible = True
+        BID_PANEL.Visible = False
+
 
 
 
     End Sub
+
+    Private Sub dataGridView7_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView7.CellContentClick
+        If e.ColumnIndex = DataGridView7.Columns("bid").Index AndAlso e.RowIndex >= 0 Then
+
+            Dim rowIndex As Integer = e.RowIndex
+
+            ' Access the data in the clicked row
+            Item = DataGridView7.Rows(rowIndex).Cells("AuctItem").Value.ToString()
+            itemtype = DataGridView7.Rows(rowIndex).Cells("AuctionItemType").Value.ToString()
+            startbidprice = DataGridView7.Rows(rowIndex).Cells("StartBid").Value.ToString()
+            curbid = DataGridView7.Rows(rowIndex).Cells("curbid_column").Value.ToString()
+
+
+            BID_PANEL.Visible = True
+            AuctionItems.Enabled = False
+            panel_left.Enabled = False
+
+
+
+        End If
+
+    End Sub
+
     Private Sub btn_customers_Click(sender As Object, e As EventArgs) Handles btn_customers.Click
         HandleButtonClick("Customers")
         panelOnButtonCst.Height = btn_customers.Height
@@ -284,7 +326,18 @@ Public Class Form1
         panelOnButtonCst.Height = btnAuctions.Height
         panelOnButtonCst.Top = btnAuctions.Top
         HandleButtonClick("Auction")
+        DataGridView7.Rows.Clear()
+        Dim aucItems As String = "Select ItemName, ItemTypeName,startingbid,currentbid,enddate from item,itemtypes,auction where item.ItemID = auction.ItemID and item.ItemType = ItemTypeID "
+        Try
+            readQuery(aucItems)
+            With cmdRead
+                While .Read
+                    DataGridView7.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), "Bid")
+                End While
+            End With
+        Catch ex As Exception
 
+        End Try
     End Sub
 
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
@@ -393,8 +446,11 @@ Public Class Form1
         Try
             readQuery(str)
             MsgBox("Successfully Added")
+            CustPanel.Visible = True
+            CustPanel.Enabled = True
+            panel_left.Enabled = True
             AddCustomerPnl.Visible = False
-            DataGridView1.Rows.Clear()
+            DataGridView4.Rows.Clear()
 
             Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
 
@@ -402,10 +458,10 @@ Public Class Form1
             readQuery(customer_data)
             With cmdRead
                 While .Read
-                    DataGridView1.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Pawn")
+                    DataGridView4.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), "Edit", "Delete")
                 End While
             End With
-            Panel4.Visible = True
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -501,7 +557,7 @@ Public Class Form1
     End Sub
 
     Private Sub dataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
-        If e.ColumnIndex = DataGridView2.Columns("renew").Index AndAlso e.RowIndex >= 0 Then
+        If e.ColumnIndex = DataGridView2.Columns("renew_column").Index AndAlso e.RowIndex >= 0 Then
             Dim rowIndex As Integer = e.RowIndex
 
             ' Access the data in the clicked row
@@ -538,6 +594,99 @@ Public Class Form1
             renewal.Text = "50.00"
 
             totaltbox2.Text = total.ToString
+
+        ElseIf e.ColumnIndex = DataGridView2.Columns("auction").Index AndAlso e.RowIndex >= 0 Then
+            Dim rowIndex As Integer = e.RowIndex
+
+            Dim expiry As DateTime = DataGridView2.Rows(rowIndex).Cells("edate_column").Value
+            Dim itemname As String = DataGridView2.Rows(rowIndex).Cells("item_column").Value.ToString()
+            Dim lname As String = DataGridView2.Rows(rowIndex).Cells("lname_column").Value.ToString()
+
+            Dim fname As String = DataGridView2.Rows(rowIndex).Cells("fname_column").Value.ToString()
+            Dim startingbid As String = DataGridView2.Rows(rowIndex).Cells("loan_column").Value.ToString()
+
+            Dim enddate As String = expiry.AddMonths(1).ToString("yyyy-MM-dd")
+
+            Dim pcardID As String
+
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo)
+
+            If result = DialogResult.Yes Then
+                Dim pcardIDquery As String = "SELECT Itemnum FROM pawncards, customers, item, itemtypes WHERE CustID = Cnum AND ItemID = Itemnum and ItemType = ItemTypeID and CustLname = '" & lname & "' and CustFname = '" & fname & "' and ItemName = '" & itemname & "';"
+                Try
+                    readQuery(pcardIDquery)
+                    With cmdRead
+                        While .Read
+                            pcardID = .GetValue(0)
+
+                        End While
+
+
+                    End With
+                    Dim itemupdate = "Update item set Status = 'Auctioned' where ItemID = '" & pcardID & "'"
+                    Dim auction_insert As String = "Insert into auction (ItemID, startingbid, enddate) values ('" & pcardID & "','" & startingbid & "', '" & enddate & "')"
+
+                    readQuery(auction_insert)
+                    readQuery(itemupdate)
+                    Dim aID As String
+                    Dim auctionid As String = "select AuctionID from auction where ItemID = '" & pcardID & "'"
+                    readQuery(auctionid)
+                    With cmdRead
+                        While .Read
+                            aID = .GetValue(0)
+                        End While
+                    End With
+                    Dim curdate As DateTime = DateTime.Now
+                    Dim formattedDate As String = curdate.ToString("yyyy-MM-dd")
+
+                    Dim itemtransfer As String = "Insert into transfers(Inum,Anum,ItemTransferDate) values ('" & pcardID & "','" & aID & "','" & formattedDate & "' )"
+
+                    readQuery(itemtransfer)
+
+                    MsgBox("Item Transferred to Auctioned", MsgBoxStyle.Information)
+                    Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
+                    DataGridView2.Rows.Clear()
+
+                    Try
+
+
+                        readQuery(pcardload)
+
+                        With cmdRead
+                            While .Read
+                                DataGridView2.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Renew", "Auction")
+                            End While
+                        End With
+
+                    Catch ex As Exception
+
+                    End Try
+
+
+
+
+
+
+                Catch ex As Exception
+
+                End Try
+
+
+
+
+            Else
+                ' User clicked No or closed the dialog, don't proceed
+                ' Your code here
+            End If
+
+
+
+
+
+
+
+
+
         End If
         ' Check if the clicked cell is the button cell and its column index matches the column where you placed the button
 
@@ -891,7 +1040,9 @@ Public Class Form1
     End Sub
 
     Private Sub AddCust_Click_1(sender As Object, e As EventArgs) Handles AddCust.Click
-        CustPanel.Visible = False
+        CustPanel.Visible = True
+        CustPanel.Enabled = False
+        panel_left.Enabled = False
         AddCustomerPnl.Visible = True
     End Sub
 
@@ -1003,24 +1154,7 @@ Public Class Form1
 
             End If
 
-
-
-
-
-
-
         End If
-
-
-
-        'Dim balance_num As Double = Double.Parse(curbalance)
-        'Dim total As Double = balance_num + 50.0
-
-
-
-
-
-
 
     End Sub
     Private Sub customersearch(ByVal dgv As DataGridView, lnamesearch As String, fnamesearch As String, method As String)
@@ -1104,6 +1238,40 @@ Public Class Form1
 
     End Sub
 
+    Private Sub transactsearch()
+        Dim transactquery As String = "select CustFname, CustLname, ItemName, ItemTypeName, T_amount, T_Date FROM customers,item,itemtypes, transactions where CustID = Cno and Itemno = ItemID and ItemType = ItemTypeID"
+
+        If Not String.IsNullOrEmpty(Transactlname.Text) Then
+            transactquery &= " and CustLname LIKE '%" & Transactlname.Text & "%'"
+        End If
+
+        If Not String.IsNullOrEmpty(Transactfname.Text) Then
+            transactquery &= " and CustFname LIKE '%" & Transactfname.Text & "%'"
+        End If
+
+        If Not String.IsNullOrEmpty(TransactItemName.Text) Then
+            transactquery &= " and ItemName LIKE '%" & TransactItemName.Text & "%'"
+        End If
+
+        If TransactItemType.SelectedIndex <> -1 Then
+            transactquery &= " and ItemTypeName = '" & TransactItemType.Text & "'"
+        End If
+        DataGridView6.Rows.Clear()
+
+        Try
+            readQuery(transactquery)
+            With cmdRead
+                While .Read
+                    DataGridView6.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5))
+
+                End While
+            End With
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles fnamesearch.TextChanged
         customersearch(DataGridView4, lnamesearch.Text, fnamesearch.Text, "")
     End Sub
@@ -1134,5 +1302,79 @@ Public Class Form1
 
     Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles statuscbox.SelectedIndexChanged
         itemsearch()
+    End Sub
+
+    Private Sub Transactfname_TextChanged(sender As Object, e As EventArgs) Handles Transactfname.TextChanged
+        transactsearch()
+    End Sub
+
+    Private Sub Transactlname_TextChanged(sender As Object, e As EventArgs) Handles Transactlname.TextChanged
+        transactsearch()
+    End Sub
+
+    Private Sub TransactItemName_TextChanged(sender As Object, e As EventArgs) Handles TransactItemName.TextChanged
+        transactsearch()
+    End Sub
+
+    Private Sub TransactItemType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TransactItemType.SelectedIndexChanged
+        transactsearch()
+    End Sub
+
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+        CustPanel.Visible = True
+        CustPanel.Enabled = True
+        panel_left.Enabled = True
+        AddCustomerPnl.Visible = False
+    End Sub
+
+    Private Sub bidconfirm_Click(sender As Object, e As EventArgs) Handles bidconfirm.Click
+        Dim bid As Double = Double.Parse(bidtbox.Text)
+        If Not bid <= startbidprice And Not bid < curbid Then
+            Dim AId As String
+            Dim ItemID As String
+            Dim auctionAndItem As String = "select AuctionID ,auction.ItemID FROM auction,item where auction.ItemID = item.ItemID AND startingbid = '" & startbidprice & "'"
+            Try
+                readQuery(auctionAndItem)
+                With cmdRead
+                    While .Read
+                        AId = .GetValue(0)
+                        ItemID = .GetValue(1)
+
+                    End While
+                End With
+
+                Dim updatebid As String = "Update auction set currentbid = '" & bidtbox.Text & "' where AuctionID = '" & AId & "' AND ItemID ='" & ItemID & "'"
+
+                readQuery(updatebid)
+                MsgBox("Bid Successfully Placed", MsgBoxStyle.Information)
+                DataGridView7.Rows.Clear()
+                Dim aucItems As String = "Select ItemName, ItemTypeName,startingbid,currentbid,enddate from item,itemtypes,auction where item.ItemID = auction.ItemID and item.ItemType = ItemTypeID "
+                Try
+                    readQuery(aucItems)
+                    With cmdRead
+                        While .Read
+                            DataGridView7.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), "Bid")
+                        End While
+                    End With
+                Catch ex As Exception
+
+                End Try
+                BID_PANEL.Visible = False
+                AuctionItems.Enabled = True
+                panel_left.Enabled = True
+            Catch ex As Exception
+
+            End Try
+
+        Else
+            MsgBox("Please input amount greater than the Current Bid")
+        End If
+
+    End Sub
+
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+        BID_PANEL.Visible = False
+        AuctionItems.Enabled = True
+        panel_left.Enabled = True
     End Sub
 End Class
