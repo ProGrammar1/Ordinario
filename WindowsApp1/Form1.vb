@@ -1,5 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Text.RegularExpressions
+
 
 Public Class Form1
 
@@ -31,6 +33,10 @@ Public Class Form1
                 Pay.Visible = False
                 paytransact.Visible = False
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
+
 
 
             Case "Pawncards"
@@ -42,6 +48,10 @@ Public Class Form1
                 renewal_panel.Visible -= True
                 Pay.Visible = False
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
+
 
 
             Case "Customers"
@@ -57,6 +67,10 @@ Public Class Form1
 
                 CustPanel.Visible = True
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
+
 
 
             Case "Payments"
@@ -74,6 +88,10 @@ Public Class Form1
                 AuctionItems.Visible = False
                 payemnts.Visible = True
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
+
 
 
             Case "Auction"
@@ -91,6 +109,9 @@ Public Class Form1
                 AuctionItems.Visible = True
                 payemnts.Visible = False
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
 
 
 
@@ -109,6 +130,50 @@ Public Class Form1
                 AuctionItems.Visible = False
                 payemnts.Visible = False
                 BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = False
+
+            Case "Records"
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible = False
+                Pay.Visible = False
+                Pawncards.Visible = False
+                paytransact.Visible = False
+
+                CustPanel.Visible = False
+                ItemsPanel.Visible = False
+                AuctionItems.Visible = False
+                payemnts.Visible = False
+                BID_PANEL.Visible = False
+                records.Visible = True
+                adduser.Visible = False
+                userspanel.Visible = False
+
+            Case "Users"
+                Panel4.Visible = False
+                AddCustomerPnl.Visible = False
+                Panel6.Visible = False
+                PanelTransactions.Visible = False
+                renewal_panel.Visible = False
+                Pay.Visible = False
+                Pawncards.Visible = False
+                paytransact.Visible = False
+
+                CustPanel.Visible = False
+                ItemsPanel.Visible = False
+                AuctionItems.Visible = False
+                payemnts.Visible = False
+                BID_PANEL.Visible = False
+                records.Visible = False
+                adduser.Visible = False
+                userspanel.Visible = True
+
+
+
 
 
 
@@ -141,7 +206,11 @@ Public Class Form1
         payemnts.Visible = False
         PanelTransactions.Visible = True
         BID_PANEL.Visible = False
+        records.Visible = False
+        adduser.Visible = False
+        userspanel.Visible = False
 
+        records.Visible = False
 
 
 
@@ -160,7 +229,8 @@ Public Class Form1
 
 
             BID_PANEL.Visible = True
-            AuctionItems.Enabled = False
+            AuctionItems.Visible = False
+
             panel_left.Enabled = False
 
 
@@ -175,6 +245,13 @@ Public Class Form1
         panelOnButtonCst.Top = btn_customers.Top
 
         DataGridView4.Rows.Clear()
+        savebtn.Enabled = False
+        updtfname.Clear()
+        updtlname.Clear()
+
+        updtcontact.Clear()
+
+        updtaddress.Clear()
 
         Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
 
@@ -409,6 +486,10 @@ Public Class Form1
             Nlnametbox.Text = value2
             Ncontacttbox.Text = value3
             Naddresstbox.Text = value4
+            jtypebox.Items.Clear()
+            jewelryname.Clear()
+            principal_amnt.Clear()
+
 
 
             Dim itemtypes As String = "Select ItemTypeName from itemtypes"
@@ -437,11 +518,27 @@ Public Class Form1
     End Sub
 
     Private Sub addcustbtn_Click(sender As Object, e As EventArgs) Handles addcustbtn.Click
+        If String.IsNullOrWhiteSpace(fnameTbox.Text) OrElse
+       String.IsNullOrWhiteSpace(lnameTbox.Text) OrElse
+       String.IsNullOrWhiteSpace(contactTbox.Text) OrElse
+       String.IsNullOrWhiteSpace(addressTbox.Text) Then
+            MsgBox("Please fill in all fields.", MsgBoxStyle.Exclamation)
+            Return
+        End If
+
+        If IsNumeric(fnameTbox.Text) OrElse IsNumeric(lnameTbox.Text) OrElse IsNumeric(addressTbox.Text) Then
+            MsgBox("Please enter valid text for name and address fields.", MsgBoxStyle.Exclamation)
+            Return
+        End If
+
+        If Not IsValidPhilippinePhoneNumber(contactTbox.Text.ToString) Then
+            MsgBox("Please enter valid phone number for name and address fields.", MsgBoxStyle.Exclamation)
+            Return
+
+        End If
 
         Dim str As String
-
-        str = "INSERT INTO customers( CustFname, CustLname, CustContact,CustAddress ) VALUES ('" & fnameTbox.Text & "','" & lnameTbox.Text & "','" & contactTbox.Text & "','" & addressTbox.Text & "')"
-
+        str = "INSERT INTO customers(CustFname, CustLname, CustContact, CustAddress) VALUES ('" & fnameTbox.Text & "','" & lnameTbox.Text & "','" & contactTbox.Text & "','" & addressTbox.Text & "')"
 
         Try
             readQuery(str)
@@ -452,8 +549,7 @@ Public Class Form1
             AddCustomerPnl.Visible = False
             DataGridView4.Rows.Clear()
 
-            Dim customer_data As String = "Select CustFname, CustLname, CustContact, CustAddress from customers where CustStatus = 'Active'"
-
+            Dim customer_data As String = "SELECT CustFname, CustLname, CustContact, CustAddress FROM customers WHERE CustStatus = 'Active'"
 
             readQuery(customer_data)
             With cmdRead
@@ -465,8 +561,6 @@ Public Class Form1
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
-
-
     End Sub
 
 
@@ -488,68 +582,73 @@ Public Class Form1
 
         Dim itemtypeidQuery As String = "select ItemTypeID from itemtypes where ItemTypeName = '" & jtypebox.Text & "'"
         Dim itemtypeid As String
+        If Not String.IsNullOrEmpty(jtypebox.Text) And Not String.IsNullOrEmpty(jewelryname.Text) And Not String.IsNullOrEmpty(principal_amnt.Text) Then
 
-        Try
-            readQuery(itemtypeidQuery)
-            With cmdRead
-                While .Read
-                    itemtypeid = .GetValue(0)
-                End While
-            End With
-        Catch ex As Exception
+            Try
+                readQuery(itemtypeidQuery)
+                With cmdRead
+                    While .Read
+                        itemtypeid = .GetValue(0)
+                    End While
+                End With
+            Catch ex As Exception
 
-        End Try
+            End Try
 
-        itmInsrt = "insert into item(ItemName, ItemValue, ItemType ) values ('" & jewelryname.Text & "' ,'n/a', '" & itemtypeid & "' )"
+            itmInsrt = "insert into item(ItemName, ItemType ) values ('" & jewelryname.Text & "' , '" & itemtypeid & "' )"
 
-
-
-
-        Try
-            readQuery(itmInsrt)
-
-
-
-            Dim itmIDquery As String = "Select ItemID FROM item ORDER BY ItemID DESC LIMIT 1"
-            Dim custIDquery As String = "Select CustID from customers where CustFname = '" & Nfnametbox.Text & "' AND CustLname = '" & Nlnametbox.Text & "' "
 
 
 
             Try
-                readQuery(itmIDquery)
-                With cmdRead
-                    While .Read
-                        itemID = .GetValue(0)
+                readQuery(itmInsrt)
 
 
 
-                    End While
-                End With
-
-                readQuery(custIDquery)
-                With cmdRead
-                    While .Read
-                        custID = .GetValue(0)
-                    End While
-                End With
+                Dim itmIDquery As String = "Select ItemID FROM item ORDER BY ItemID DESC LIMIT 1"
+                Dim custIDquery As String = "Select CustID from customers where CustFname = '" & Nfnametbox.Text & "' AND CustLname = '" & Nlnametbox.Text & "' "
 
 
+
+                Try
+                    readQuery(itmIDquery)
+                    With cmdRead
+                        While .Read
+                            itemID = .GetValue(0)
+
+
+
+                        End While
+                    End With
+
+                    readQuery(custIDquery)
+                    With cmdRead
+                        While .Read
+                            custID = .GetValue(0)
+                        End While
+                    End With
+
+
+
+                Catch ex As Exception
+
+                End Try
+                str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, Cnum, Itemnum ) VALUES ('" & pawndate & "' ,'" & mdate & "','" & Edate & "' ,'" & total_amount.Text.ToString & "' ,'" & total_amount.Text.ToString & "','" & custID & "','" & itemID & "' )"
+
+
+                readQuery(str)
+
+                MsgBox("Successfully Added")
+                Panel6.Visible = False
+                Panel4.Visible = True
 
             Catch ex As Exception
-
+                MsgBox(ex.Message, MsgBoxStyle.Critical)
             End Try
-            str = "INSERT INTO pawncards( PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, Cnum, Itemnum ) VALUES ('" & pawndate & "' ,'" & mdate & "','" & Edate & "' ,'" & total_amount.Text.ToString & "' ,'" & total_amount.Text.ToString & "','" & custID & "','" & itemID & "' )"
+        Else
+            MsgBox("Please Fill all required inputs", MsgBoxStyle.Critical)
+        End If
 
-
-            readQuery(str)
-
-            MsgBox("Successfully Added")
-            Panel6.Visible = False
-            Panel4.Visible = True
-
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical)
-        End Try
 
 
 
@@ -693,24 +792,30 @@ Public Class Form1
     End Sub
 
     Private Sub principal_amnt_TextChanged(sender As Object, e As EventArgs) Handles principal_amnt.TextChanged
+        Try
+            If String.IsNullOrEmpty(principal_amnt.Text) Then
 
-        If String.IsNullOrEmpty(principal_amnt.Text) Then
+                total_amount.Text = ""
 
-            total_amount.Text = ""
-
-        Else
-
-
-            Dim principal As Double = Double.Parse(principal_amnt.Text)
-
-            Dim interest As Double = Double.Parse(interestRate.Text)
-            Dim interest_amnt As Double = principal * interest
-            Dim total_amnt As Double = principal + interest_amnt
-            total_amntvar = total_amnt
-            total_amount.Text = total_amnt.ToString
+            Else
 
 
-        End If
+                Dim principal As Double = Double.Parse(principal_amnt.Text)
+
+                Dim interest As Double = Double.Parse(interestRate.Text)
+                Dim interest_amnt As Double = principal * interest
+                Dim total_amnt As Double = principal + interest_amnt
+                total_amntvar = total_amnt
+                total_amount.Text = total_amnt.ToString
+
+
+            End If
+        Catch ex As Exception
+            MsgBox("Please Enter Correct Input")
+            principal_amnt.Clear()
+
+        End Try
+
     End Sub
 
     Private Sub ItemTypeSearchbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ItemTypeSearchbox.SelectedIndexChanged
@@ -876,78 +981,84 @@ Public Class Form1
         Dim IDquery = "SELECT PcardID, Cnum, Itemnum FROM pawncards, customers, item, itemtypes WHERE CustID = Cnum AND ItemID = Itemnum and ItemType = ItemTypeID and CustLname = '" & lname3.Text & "' and CustFname = '" & fname3.Text & "' and ItemName = '" & jname3.Text & "' ;"
         Dim currentDate As Date = DateTime.Now
         Dim sqlFormattedDate As String = currentDate.ToString("yyyy-MM-dd")
-
-
-        Dim amount As Double = Double.Parse(amountpaytbox.Text.ToString)
-        Dim updt_blance As Double = Double.Parse(bduetbox.Text.ToString) - amount
-
-
         Try
-            If updt_blance < 0 Then
-                MsgBox("Please enter correct amount", MsgBoxStyle.Critical)
-                Return
+            Dim amount As Double = Double.Parse(amountpaytbox.Text.ToString)
+            Dim updt_blance As Double = Double.Parse(bduetbox.Text.ToString) - amount
 
-            ElseIf updt_blance > 0 Then
-
-                status = "Active"
-
-
-            Else
-                status = "Redeemed"
-
-
-            End If
-
-            readQuery(IDquery)
-            With cmdRead
-                While .Read
-                    PcardId = .GetValue(0)
-                    Cnum = .GetValue(1)
-                    itemnum = .GetValue(2)
-                End While
-            End With
-            Dim InsPayments = "Insert into transactions(Cno, Itemno, T_amount, T_Date) values ('" & Cnum & "' ,'" & itemnum & "' ,'" & amount.ToString & "' ,'" & sqlFormattedDate & "'  )"
-            Dim update_balanceQuery As String = "Update pawncards set balance = '" & updt_blance.ToString & "' where PcardID = '" & PcardId & "'"
-            Dim itemstatus As String = "update item set Status = '" & status & "' where ItemID = '" & itemnum & "'"
-            readQuery(InsPayments)
-            readQuery(update_balanceQuery)
-            readQuery(itemstatus)
-
-            MsgBox("Payment Succesful", MsgBoxStyle.MsgBoxRight)
-
-            Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
-            Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
-            DataGridView3.Rows.Clear()
 
             Try
-                readQuery(itemtypeload)
+                If updt_blance < 0 Then
+                    MsgBox("Please enter correct amount", MsgBoxStyle.Critical)
+                    Return
 
+                ElseIf updt_blance > 0 Then
+
+                    status = "Active"
+
+
+                Else
+                    status = "Redeemed"
+
+
+                End If
+
+                readQuery(IDquery)
                 With cmdRead
                     While .Read
-                        itemtypesearchbox2.Items.Add(.GetValue(0))
+                        PcardId = .GetValue(0)
+                        Cnum = .GetValue(1)
+                        itemnum = .GetValue(2)
                     End While
                 End With
+                Dim InsPayments = "Insert into transactions(Cno, Itemno, T_amount, T_Date) values ('" & Cnum & "' ,'" & itemnum & "' ,'" & amount.ToString & "' ,'" & sqlFormattedDate & "'  )"
+                Dim update_balanceQuery As String = "Update pawncards set balance = '" & updt_blance.ToString & "' where PcardID = '" & PcardId & "'"
+                Dim itemstatus As String = "update item set Status = '" & status & "' where ItemID = '" & itemnum & "'"
+                readQuery(InsPayments)
+                readQuery(update_balanceQuery)
+                readQuery(itemstatus)
 
-                readQuery(pcardload)
+                MsgBox("Payment Succesful", MsgBoxStyle.MsgBoxRight)
 
-                With cmdRead
-                    While .Read
-                        DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
-                    End While
-                End With
+                Dim itemtypeload As String = "Select ItemTypeName from itemtypes"
+                Dim pcardload As String = "Select PawnDate, MaturityDate, ExpiryDate, LoanAmount, Balance, CustLname, CustFname, ItemName, ItemTypeName from pawncards,customers, item, itemtypes where Cnum = CustID and ItemID = Itemnum  and ItemType = ItemTypeID and Status = 'Active'"
+                DataGridView3.Rows.Clear()
 
+                Try
+                    readQuery(itemtypeload)
+
+                    With cmdRead
+                        While .Read
+                            itemtypesearchbox2.Items.Add(.GetValue(0))
+                        End While
+                    End With
+
+                    readQuery(pcardload)
+
+                    With cmdRead
+                        While .Read
+                            DataGridView3.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), .GetValue(5), .GetValue(6), .GetValue(7), .GetValue(8), "Pay")
+                        End While
+                    End With
+
+
+                Catch ex As Exception
+
+                End Try
 
             Catch ex As Exception
+                MsgBox(ex.Message)
 
             End Try
 
+            paytransact.Visible = False
+            Pay.Visible = True
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Please Enter Correct Input")
+
 
         End Try
 
-        paytransact.Visible = False
-        Pay.Visible = True
+
 
     End Sub
 
@@ -1044,11 +1155,15 @@ Public Class Form1
         CustPanel.Enabled = False
         panel_left.Enabled = False
         AddCustomerPnl.Visible = True
+        fnameTbox.Text = ""
+        addressTbox.Text = ""
+        contactTbox.Text = ""
+        lnameTbox.Text = ""
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles savebtn.Click
 
-        If Not String.IsNullOrEmpty(updtfname.Text) Or Not String.IsNullOrEmpty(updtlname.Text) Or Not String.IsNullOrEmpty(updtaddress.Text) Or Not String.IsNullOrEmpty(updtcontact.Text) Then
+        If Not String.IsNullOrEmpty(updtfname.Text) And Not String.IsNullOrEmpty(updtlname.Text) And Not String.IsNullOrEmpty(updtaddress.Text) And Not String.IsNullOrEmpty(updtcontact.Text) And IsValidPhilippinePhoneNumber(updtcontact.Text.ToString) Then
             Dim custupdate As String = "Update customers set CustFname = '" & updtfname.Text & "',CustLname = '" & updtlname.Text & "',CustContact = '" & updtcontact.Text & "',CustAddress = '" & updtaddress.Text & "' where CustID = '" & custid & "'"
             Try
                 readQuery(custupdate)
@@ -1066,7 +1181,7 @@ Public Class Form1
 
             End Try
         Else
-            MsgBox("Please fill up all forms", MsgBoxStyle.Critical)
+            MsgBox("Please input necessary values", MsgBoxStyle.Critical)
 
 
 
@@ -1074,6 +1189,15 @@ Public Class Form1
         End If
 
     End Sub
+
+    Function IsValidPhilippinePhoneNumber(ByVal phoneNumber As String) As Boolean
+        ' Regular expression pattern for Philippine phone number format
+        Dim pattern As String = "^09[0-9]{9}$"
+
+        ' Check if the phone number matches the pattern
+        Dim regex As New Regex(pattern)
+        Return regex.IsMatch(phoneNumber)
+    End Function
 
 
     Private Sub CustomerIdquery(fname As String, lname As String)
@@ -1328,53 +1452,68 @@ Public Class Form1
     End Sub
 
     Private Sub bidconfirm_Click(sender As Object, e As EventArgs) Handles bidconfirm.Click
-        Dim bid As Double = Double.Parse(bidtbox.Text)
-        If Not bid <= startbidprice And Not bid < curbid Then
-            Dim AId As String
-            Dim ItemID As String
-            Dim auctionAndItem As String = "select AuctionID ,auction.ItemID FROM auction,item where auction.ItemID = item.ItemID AND startingbid = '" & startbidprice & "'"
-            Try
-                readQuery(auctionAndItem)
-                With cmdRead
-                    While .Read
-                        AId = .GetValue(0)
-                        ItemID = .GetValue(1)
 
-                    End While
-                End With
+        Try
+            If Not String.IsNullOrEmpty(bidtbox.Text) Then
 
-                Dim updatebid As String = "Update auction set currentbid = '" & bidtbox.Text & "' where AuctionID = '" & AId & "' AND ItemID ='" & ItemID & "'"
+                Dim bid As Double = Double.Parse(bidtbox.Text)
 
-                readQuery(updatebid)
-                MsgBox("Bid Successfully Placed", MsgBoxStyle.Information)
-                DataGridView7.Rows.Clear()
-                Dim aucItems As String = "Select ItemName, ItemTypeName,startingbid,currentbid,enddate from item,itemtypes,auction where item.ItemID = auction.ItemID and item.ItemType = ItemTypeID "
-                Try
-                    readQuery(aucItems)
-                    With cmdRead
-                        While .Read
-                            DataGridView7.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), "Bid")
-                        End While
-                    End With
-                Catch ex As Exception
+                If Not bid <= startbidprice And Not bid < curbid Then
+                    Dim AId As String
+                    Dim ItemID As String
+                    Dim auctionAndItem As String = "select AuctionID ,auction.ItemID FROM auction,item where auction.ItemID = item.ItemID AND startingbid = '" & startbidprice & "'"
+                    Try
+                        readQuery(auctionAndItem)
+                        With cmdRead
+                            While .Read
+                                AId = .GetValue(0)
+                                ItemID = .GetValue(1)
 
-                End Try
-                BID_PANEL.Visible = False
-                AuctionItems.Enabled = True
-                panel_left.Enabled = True
-            Catch ex As Exception
+                            End While
+                        End With
 
-            End Try
+                        Dim updatebid As String = "Update auction set currentbid = '" & bidtbox.Text & "' where AuctionID = '" & AId & "' AND ItemID ='" & ItemID & "'"
 
-        Else
-            MsgBox("Please input amount greater than the Current Bid")
-        End If
+                        readQuery(updatebid)
+                        MsgBox("Bid Successfully Placed", MsgBoxStyle.Information)
+                        DataGridView7.Rows.Clear()
+                        bidtbox.Clear()
+                        Dim aucItems As String = "Select ItemName, ItemTypeName,startingbid,currentbid,enddate from item,itemtypes,auction where item.ItemID = auction.ItemID and item.ItemType = ItemTypeID "
+                        Try
+                            readQuery(aucItems)
+                            With cmdRead
+                                While .Read
+                                    DataGridView7.Rows.Add(.GetValue(0), .GetValue(1), .GetValue(2), .GetValue(3), .GetValue(4), "Bid")
+                                End While
+                            End With
+                        Catch ex As Exception
+
+                        End Try
+                        BID_PANEL.Visible = False
+                        AuctionItems.Enabled = True
+                        panel_left.Enabled = True
+                    Catch ex As Exception
+
+                    End Try
+
+                Else
+                    MsgBox("Please input amount greater than the Current Bid", MsgBoxStyle.Exclamation)
+                End If
+
+            Else
+                MsgBox("Input cannot be empty", MsgBoxStyle.Exclamation)
+            End If
+        Catch ex As Exception
+            MsgBox("Please enter valid value")
+        End Try
+
+
 
     End Sub
 
     Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
         BID_PANEL.Visible = False
-        AuctionItems.Enabled = True
+        AuctionItems.Visible = True
         panel_left.Enabled = True
     End Sub
 
@@ -1410,6 +1549,102 @@ Public Class Form1
 
         End Try
 
+
+    End Sub
+
+    Private Sub reportsbtn_Click(sender As Object, e As EventArgs) Handles reportsbtn.Click
+        panelOnButtonCst.Height = reportsbtn.Height
+        panelOnButtonCst.Top = reportsbtn.Top
+        HandleButtonClick("Records")
+
+
+
+        Dim custcount2 As String = "SELECT count(*) from customers where customers.CustStatus = 'Active'"
+        Dim item_loan_count As String = "SELECT count(*) from item where item.Status = 'Active';"
+        Dim t_bal As String = "SELECT SUM(pawncards.Balance) from pawncards join item on item.ItemID = pawncards.Itemnum where item.Status = 'Active';"
+        Dim auction_count As String = "select count(*) from auction where auctionstatus = 'Active'"
+
+        Dim c_count As String
+        Dim item_count As String
+        Dim total_balnce As String
+        Dim total_balance_with_peso As String
+        Dim a_count As String
+
+        Try
+            readQuery(custcount2)
+            With cmdRead
+                While .Read
+                    c_count = .GetValue(0)
+
+                End While
+            End With
+
+            readQuery(item_loan_count)
+            With cmdRead
+                While .Read
+                    item_count = .GetValue(0)
+
+                End While
+            End With
+
+            readQuery(t_bal)
+            With cmdRead
+                While .Read
+                    total_balnce = .GetValue(0)
+                    total_balance_with_peso = "₱" & total_balnce & ".00"
+
+                End While
+            End With
+
+            readQuery(auction_count)
+            With cmdRead
+                While .Read
+                    a_count = .GetValue(0)
+
+                End While
+            End With
+
+
+
+        Catch ex As Exception
+
+        End Try
+
+        custcount.Text = c_count
+        loan_count.Text = item_count
+        bal_count.Text = total_balance_with_peso
+        auct_count.Text = a_count
+    End Sub
+
+    Private Sub add_user_Click(sender As Object, e As EventArgs) Handles add_user.Click
+        u_level_cbox.Items.Clear()
+        u_level_cbox.Items.Add("Admin")
+        u_level_cbox.Items.Add("User")
+
+
+        userspanel.Enabled = False
+        panel_left.Enabled = False
+        adduser.Visible = True
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+
+    End Sub
+
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
+        userspanel.Enabled = True
+        panel_left.Enabled = True
+        adduser.Visible = False
+    End Sub
+
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+        panelOnButtonCst.Height = Button7.Height
+        panelOnButtonCst.Top = Button7.Top
+
+        HandleButtonClick("Users")
+    End Sub
+
+    Private Sub PanelTransactions_Paint(sender As Object, e As PaintEventArgs) Handles PanelTransactions.Paint
 
     End Sub
 End Class
