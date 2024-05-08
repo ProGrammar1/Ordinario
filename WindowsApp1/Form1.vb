@@ -1,9 +1,12 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports System.Text.RegularExpressions
+Imports System.Security.Cryptography
+Imports System.Text
 
 
 Public Class Form1
+    Public Property UserData As String
 
     Dim total_amntvar As Double
     Dim custid As String
@@ -211,6 +214,37 @@ Public Class Form1
         userspanel.Visible = False
 
         records.Visible = False
+
+        If UserData.Equals("Admin") Then
+            btnAuctions.Enabled = True
+            btnPawnCards.Enabled = True
+            btn_customers.Enabled = True
+            buttonItems.Enabled = True
+            btnTransactRec.Enabled = True
+            btn_transactions.Enabled = True
+            users.Enabled = False
+            reportsbtn.Enabled = False
+
+
+        ElseIf UserData.Equals("User") Then
+
+            buttonItems.Enabled = False
+
+            users.Enabled = False
+            reportsbtn.Enabled = False
+
+        Else
+            btnAuctions.Enabled = True
+            btnPawnCards.Enabled = True
+            btn_customers.Enabled = True
+            buttonItems.Enabled = True
+            btnTransactRec.Enabled = True
+            btn_transactions.Enabled = True
+            users.Enabled = True
+            reportsbtn.Enabled = True
+
+        End If
+        'Dim pos As String = loginfrm.DataToPass
 
 
 
@@ -1620,6 +1654,8 @@ Public Class Form1
         u_level_cbox.Items.Clear()
         u_level_cbox.Items.Add("Admin")
         u_level_cbox.Items.Add("User")
+        username_tbox.Clear()
+        password_tbox.Clear()
 
 
         userspanel.Enabled = False
@@ -1629,7 +1665,61 @@ Public Class Form1
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
 
+        If Not String.IsNullOrEmpty(username_tbox.Text) And Not String.IsNullOrEmpty(password_tbox.Text) And Not String.IsNullOrEmpty(u_level_cbox.Text) Then
+            Dim username As String = username_tbox.Text
+            Dim password As String = EncryptPassword(password_tbox.Text) ' Encrypt password before storing
+            Dim user_level As String = u_level_cbox.Text
+
+
+            Dim insert_user = "insert into users (username,password,user_level) values ('" & username & "','" & password & "', '" & user_level & "' )"
+
+            Try
+                readQuery(insert_user)
+                MsgBox("User Successfully Added")
+                username_tbox.Clear()
+                password_tbox.Clear()
+                u_level_cbox.Items.Clear()
+                adduser.Visible = False
+                userspanel.Enabled = True
+                panel_left.Enabled = True
+                Dim userquery As String = "Select username,user_level from users"
+                DataGridView8.Rows.Clear()
+
+                Try
+                    readQuery(userquery)
+                    With cmdRead
+                        While .Read
+                            DataGridView8.Rows.Add(.GetValue(0), .GetValue(1))
+                        End While
+                    End With
+
+                Catch ex As Exception
+
+                End Try
+            Catch ex As Exception
+
+            End Try
+        End If
+
     End Sub
+
+    Private Function EncryptPassword(password As String) As String
+        Using md5Hash As MD5 = MD5.Create()
+            ' Convert the input string to a byte array and compute the hash
+            Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(password))
+
+            ' Create a new StringBuilder to collect the bytes
+            Dim sBuilder As New StringBuilder()
+
+            ' Loop through each byte of the hashed data and format each one as a hexadecimal string
+            For i As Integer = 0 To data.Length - 1
+                sBuilder.Append(data(i).ToString("x2"))
+            Next
+
+            ' Return the hexadecimal string
+            Return sBuilder.ToString()
+        End Using
+    End Function
 
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
         userspanel.Enabled = True
@@ -1637,14 +1727,41 @@ Public Class Form1
         adduser.Visible = False
     End Sub
 
-    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
-        panelOnButtonCst.Height = Button7.Height
-        panelOnButtonCst.Top = Button7.Top
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles users.Click
+        panelOnButtonCst.Height = users.Height
+        panelOnButtonCst.Top = users.Top
+
+
 
         HandleButtonClick("Users")
+
+        Dim userquery As String = "Select username,user_level from users"
+        DataGridView8.Rows.Clear()
+
+        Try
+            readQuery(userquery)
+            With cmdRead
+                While .Read
+                    DataGridView8.Rows.Add(.GetValue(0), .GetValue(1))
+                End While
+            End With
+
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 
     Private Sub PanelTransactions_Paint(sender As Object, e As PaintEventArgs) Handles PanelTransactions.Paint
 
+    End Sub
+
+    Private Sub logout_Click(sender As Object, e As EventArgs) Handles logout.Click
+        UserData = ""
+
+        Dim loginfrm As New loginfrm
+        loginfrm.Show()
+        Me.Close()
     End Sub
 End Class

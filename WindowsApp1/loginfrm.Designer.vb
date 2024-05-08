@@ -32,7 +32,7 @@ Partial Class loginfrm
         Me.password = New System.Windows.Forms.Label()
         Me.Userpass = New System.Windows.Forms.TextBox()
         Me.showhide = New System.Windows.Forms.CheckBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.login = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -132,18 +132,18 @@ Partial Class loginfrm
         Me.showhide.Text = "Show"
         Me.showhide.UseVisualStyleBackColor = True
         '
-        'Button1
+        'login
         '
-        Me.Button1.BackColor = System.Drawing.Color.Gold
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(62, 425)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(350, 51)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Login"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.login.BackColor = System.Drawing.Color.Gold
+        Me.login.FlatAppearance.BorderSize = 0
+        Me.login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.login.Font = New System.Drawing.Font("Franklin Gothic Medium Cond", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.login.Location = New System.Drawing.Point(62, 425)
+        Me.login.Name = "login"
+        Me.login.Size = New System.Drawing.Size(350, 51)
+        Me.login.TabIndex = 7
+        Me.login.Text = "Login"
+        Me.login.UseVisualStyleBackColor = False
         '
         'Panel2
         '
@@ -182,7 +182,7 @@ Partial Class loginfrm
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.login)
         Me.Controls.Add(Me.showhide)
         Me.Controls.Add(Me.password)
         Me.Controls.Add(Me.Userpass)
@@ -211,7 +211,7 @@ Partial Class loginfrm
     Friend WithEvents password As Label
     Friend WithEvents Userpass As TextBox
     Friend WithEvents showhide As CheckBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents login As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
